@@ -129,38 +129,28 @@ q: any;
       const db = getFirestore();
       const dbRef = collection(db, "altcurlOne")
 
-     //  let altcurlOne$ = [];
-     //  const getaltcurlOnes = async() => {
-
       try {
         const docsSnap = await getDocs(dbRef);
         docsSnap.forEach(doc => {
-          const altcurlOne = doc.data();
+          const altcurlOne$ = doc.data();
 
-          this.altcurlOne.push(altcurlOne);
+         console.log(altcurlOne$);
 
         })
       } catch (err) {
         console.log("getaltcurlOne:" + err)
       }
 
-    //}
-      // onSnapshot(dbRef, docsSnap => {
-      // docsSnap.forEach(doc => {
-      //   console.log(doc.data());
-      // })
-      // });
 
   }
 
 
   getAltcurlTwo() {
-    const db = getFirestore();
-    return this.collection(`userProfile/${this.userId}/altcurlTwo`,
-      ref =>
-        ref.orderBy('dateToday', 'desc').limit(1)
-    );
-  }getAltcurlThree() {
+
+  }
+
+
+  getAltcurlThree() {
     const db = getFirestore();
     return this.collection(`userProfile/${this.userId}/altcurlThree`,
       ref =>

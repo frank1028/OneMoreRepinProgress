@@ -1,0 +1,212 @@
+<ion-header><br/><br/><br/><br/>
+<ion-toolbar class=" ion-padding-top ion-text-center" color="midnightblue">
+    <br/><br/>
+        <ion-buttons slot="start">
+            <ion-back-button text="" size="small"></ion-back-button>
+        </ion-buttons>
+        <strong>Available Triceps Exercises</strong>
+    </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content class="ion-no-padding" color="midnightblue">
+<ion-grid>
+<ion-row>
+<ion-col size="12" size-lg="8" Size-md="8" Size-sm="8" offset-lg="2" offset-md="2" offset-sm="2">
+
+
+            <ion-list-header color="medium">
+                <ion-label class="app-font-14 ion-padding-left"><strong>Entire Triceps</strong></ion-label>
+            </ion-list-header>
+
+
+            <ion-row>
+                <ion-col size="8">
+
+                <ion-item  color="darkpaper" class="app-font-14" routerLink="/ropepushdown" (click)="presentLoading()">
+                    <strong>Rope Pushdown</strong>
+                </ion-item>
+            </ion-col>
+            <ion-col size="4">
+
+                        <ion-item  color="tertiary" routerLink="/ropepushdown/ropepushdownhist">Progress</ion-item>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col size="8">
+
+                    <ion-item  color="darkpaper" class="app-font-16" routerLink="/propepushdown" (click)="presentLoading()">
+                        <strong>Rope Pushdown Pyramid</strong></ion-item>
+                    </ion-col>
+                    <ion-col size="4">
+
+                        <ion-item  color="tertiary" routerLink="/propepushdown/propepushdownhist">Progress</ion-item>
+                    </ion-col>
+                </ion-row>
+
+
+
+                <ion-row>
+                    <ion-col size="8">
+
+                <ion-item  routerLink="/benchdips" color="paper" expand="block" class="app-font-18" (click)="presentLoading()" class="text-capitalize">
+                    <strong>Bench Dips</strong>
+                </ion-item>
+            </ion-col>
+            <ion-col size="4">
+
+                    <ion-item  color="tertiary" routerLink="/benchdips/benchdipshist">Progress</ion-item>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col size="8">
+
+                <ion-item  color="darkpaper" class="app-font-14" routerLink="/dips" (click)="presentLoading()">
+                    <strong>Dips</strong>
+                </ion-item>
+            </ion-col>
+            <ion-col size="4">
+
+                    <ion-item  color="tertiary" routerLink="/dips/dipshist">Progress</ion-item>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col size="8">
+
+                <ion-item  color="paper" class="app-font-14" routerLink="/onearmohext" (click)="presentLoading()">
+                    <strong>1 Arm Overhead extension</strong>
+                </ion-item>
+            </ion-col>
+            <ion-col size="4">
+
+                    <ion-item  color="tertiary" routerLink="/onearmohext/onearmohexthist">Progress</ion-item>
+                </ion-col>
+            </ion-row>
+
+
+            <ion-list-header color="medium">
+                <ion-label class="app-font-14 ion-padding-left"><strong>Outer & Middle (laterial & medial) Heads</strong></ion-label>
+            </ion-list-header>
+            <ion-row>
+                <ion-col size="8">
+
+                <ion-item  color="darkpaper" class="app-font-14" routerLink="/dbtricepsext" (click)="presentLoading()">
+                    <strong>Dumbbell Triceps Extension</strong></ion-item>
+                </ion-col>
+                <ion-col size="4">
+
+                    <ion-item  color="tertiary" routerLink="/dbtricepsext/dbtricepsexthist">Progress</ion-item>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col size="8">
+
+                <ion-item  color="paper" class="app-font-14" routerLink="/closegripbp" (click)="presentLoading()">
+                    <strong>Close Grip bench Press</strong></ion-item>
+                </ion-col>
+                <ion-col size="4">
+
+                    <ion-item  color="tertiary" routerLink="/closegripbp/closegripbphist">Progress</ion-item>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col size="8">
+
+                <ion-item  color="paper" class="app-font-16" routerLink="/pclosebench" (click)="presentLoading()">
+                    <strong>Close Grip Bench Press Pyramid</strong></ion-item>
+                </ion-col>
+                <ion-col size="4">
+
+                    <ion-item  color="tertiary" routerLink="/pclosebench/pclosebenchthist">Progress</ion-item>
+                </ion-col>
+            </ion-row>
+
+
+            <ion-list-header color="medium">
+                <ion-label class="app-font-14 ion-padding-left"><strong>Outer & Inner (laterial & long) Heads</strong></ion-label>
+            </ion-list-header>
+            <ion-row>
+                <ion-col size="8">
+
+                <ion-item  color="paper" class="app-font-14" routerLink="/tricepspushdown" (click)="presentLoading()">
+                    <strong>Triceps Pushdown</strong></ion-item>
+                </ion-col>
+                <ion-col size="4">
+
+                    <ion-item  color="tertiary" routerLink="/tricepspushdown/tricepspushdownhist">Progress</ion-item>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col size="8">
+
+                <ion-item  color="paper" class="app-font-16" routerLink="/ppushdown" (click)="presentLoading()">
+                    <strong>Triceps Pushdown Pyramid</strong></ion-item>
+                </ion-col>
+                <ion-col size="4">
+
+                    <ion-item  color="tertiary" routerLink="/ppushdown/ppushdownhist">Progress</ion-item>
+                </ion-col>
+            </ion-row>
+
+
+            <ion-list-header color="medium">
+                <ion-label class="app-font-14 ion-padding-left"><strong>Inner (long) Head</strong></ion-label>
+            </ion-list-header>
+
+
+            <ion-row>
+                <ion-col size="8">
+
+                <ion-item  color="darkpaper" class="app-font-14" routerLink="/overheadext" (click)="presentLoading()">
+                    <strong>Overhead Extension</strong>
+                </ion-item>
+            </ion-col>
+            <ion-col size="4">
+
+                    <ion-item  color="tertiary" routerLink="/overheadext/overheadexthist">Progress</ion-item>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col size="8">
+
+                <ion-item  color="darkpaper" class="app-font-16" routerLink="/pohext" (click)="presentLoading()">
+                    <strong>Overhead Extension Pyramid</strong></ion-item>
+                </ion-col>
+                <ion-col size="4">
+
+                    <ion-item  color="tertiary" routerLink="/pohext/pohexthist">Progress</ion-item>
+                </ion-col>
+            </ion-row>
+
+
+
+            <ion-list-header color="medium">
+                <ion-label class="app-font-14 ion-padding-left"><strong>Outer (lateral) Head</strong></ion-label>
+            </ion-list-header>
+            <ion-row>
+                <ion-col size="8">
+
+                <ion-item  color="paper" class="app-font-14" routerLink="/kctricepsext" (click)="presentLoading()">
+                    <strong>Kneeling Cable Extension</strong>
+                </ion-item>
+            </ion-col>
+            <ion-col size="4">
+
+                    <ion-item  color="tertiary" routerLink="/kctricepsext/kctricepsexthist">Progress</ion-item>
+                </ion-col>
+            </ion-row>
+
+
+    </ion-col>
+</ion-row>
+</ion-grid>
+
+</ion-content>

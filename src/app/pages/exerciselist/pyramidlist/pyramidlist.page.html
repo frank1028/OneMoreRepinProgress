@@ -1,0 +1,359 @@
+<ion-header><br/><br/>
+    <meta name="Description" content="chest exercises">
+    <ion-toolbar class=" ion-padding-top ion-text-center" color="midnightblue">
+        <br/><br/>
+        <ion-buttons slot="start">
+            <ion-back-button text="" size="small"></ion-back-button>
+          </ion-buttons>
+        <strong>Available Pyramid Exercises</strong>
+    </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content class="ion-no-padding ion-no-margin" color="midnightblue">
+<ion-grid>
+<ion-row>
+<ion-col size="12" size-lg="8" Size-md="8" Size-sm="8" offset-lg="2" offset-md="2" offset-sm="2">
+
+
+            <ion-list-header color="medium">
+                <ion-label class="app-font-16 ion-padding-left"><strong>Back</strong></ion-label>
+            </ion-list-header>
+
+            <ion-row>
+                <ion-col size="8">
+
+                <ion-item  detil="false" color="paper" class="app-font-16" routerLink="/pseatedrow" (click)="presentLoading()">
+                    <strong>Seated Row Pyramid</strong></ion-item>
+                </ion-col>
+                <ion-col size="4">
+                    <ion-item  detil="false" color="tertiary" routerLink="/pseatedrow/pseatedrowhist" class="app-font-12 "class="app-font-12 ">Progress</ion-item>
+                </ion-col>
+            </ion-row>
+
+
+            <ion-row>
+                <ion-col size="8">
+
+               <ion-item  detil="false" color="darkpaper" class="app-font-16" routerLink="/pbbrow" (click)="presentLoading()">
+                    <strong>Barbell Row Pyramid</strong>
+                </ion-item>
+            </ion-col>
+            <ion-col size="4">
+
+                   <ion-item  detil="false" color="tertiary" routerLink="/pbbrow/pbbrowhist" class="app-font-12 ">Progress</ion-item>
+                </ion-col>
+            </ion-row>
+
+
+            <ion-row>
+                <ion-col size="8">
+
+               <ion-item  detil="false" color="paper" class="app-font-16" routerLink="/ppulldown" (click)="presentLoading()">
+                    <strong>Wide Grip Pulldown Pyramid</strong>
+                </ion-item>
+            </ion-col>
+            <ion-col size="4">
+
+                   <ion-item  detil="false" color="tertiary" routerLink="/ppulldown/ppulldownhist" class="app-font-12 ">Progress</ion-item>
+                </ion-col>
+            </ion-row>
+
+
+            <ion-row>
+                <ion-col size="8">
+
+               <ion-item  detil="false" color="darkpaper" class="app-font-16" routerLink="/pdeadlift" (click)="presentLoading()">
+                    <strong>Deadlift Pyramid</strong>
+                </ion-item>
+            </ion-col>
+            <ion-col size="4">
+
+                   <ion-item  detil="false" color="tertiary" routerLink="/pdeadlift/pdeadlifthist" class="app-font-12 ">Progress</ion-item>
+                </ion-col>
+            </ion-row>
+
+
+            <ion-list-header color="medium">
+                <ion-label class="app-font-16 ion-padding-left"><strong>Biceps</strong></ion-label>
+            </ion-list-header>
+
+            <ion-row>
+                <ion-col size="8">
+
+               <ion-item  detil="false" color="darkpaper" class="app-font-16" routerLink="/pbbcurl" (click)="presentLoading()">
+                    <strong>Barbell Curl Pyramid</strong></ion-item>
+                </ion-col>
+                <ion-col size="4">
+
+                   <ion-item  detil="false" color="tertiary" routerLink="/pbbcurl/pbbcurlhist" class="app-font-12 ">Progress</ion-item>
+                </ion-col>
+            </ion-row>
+
+
+            <ion-row>
+                <ion-col size="8">
+
+               <ion-item  detil="false" color="paper" class="app-font-16" routerLink="/pclosebbcurl" (click)="presentLoading()">
+                    <strong>Close Grip Barbell Curl Pyramid</strong></ion-item>
+                </ion-col>
+                <ion-col size="4">
+
+                   <ion-item  detil="false" color="tertiary" routerLink="/pclosebbcurl/pclosebbcurlhist" class="app-font-12 ">Progress</ion-item>
+                </ion-col>
+            </ion-row>
+
+
+            <ion-row>
+                <ion-col size="8">
+
+               <ion-item  detil="false" color="darkpaper" class="app-font-16" routerLink="/pinclinecurl" (click)="presentLoading()">
+                    <strong>Incline Curl Pyramid</strong>
+                </ion-item>
+            </ion-col>
+            <ion-col size="4">
+
+                   <ion-item  detil="false" color="tertiary" routerLink="/pinclinecurl/pinclinecurlhist" class="app-font-12 ">Progress</ion-item>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col size="8">
+
+                <ion-item  detil="false" routerLink="/ppreachercurl" color="paper" expand="block" class="app-font-16" (click)="presentLoading()" class="text-capitalize">
+                    <strong>Preacher Curl Pyramid</strong>
+                </ion-item>
+            </ion-col>
+            <ion-col size="4">
+
+                   <ion-item  detil="false" color="tertiary" routerLink="/ppreachercurl/ppreachercurlhist" class="app-font-12 ">Progress</ion-item>
+                </ion-col>
+            </ion-row>
+
+
+            <ion-list-header color="medium">
+                <ion-label class="app-font-16 ion-padding-left"><strong>Calves</strong></ion-label>
+            </ion-list-header>
+
+            <ion-row>
+                <ion-col size="8">
+
+               <ion-item  detil="false" color="darkpaper" class="app-font-16" routerLink="/pcalfraise" (click)="presentLoading()">
+                    <strong>Calf Raise Pyramid</strong>
+                </ion-item>
+            </ion-col>
+            <ion-col size="4">
+
+                   <ion-item  detil="false" color="tertiary" routerLink="/pcalfraise/pcalfraisehist" class="app-font-12 ">Progress</ion-item>
+                </ion-col>
+            </ion-row>
+
+
+ <ion-list-header color="medium">
+                <ion-label class="app-font-16 ion-padding-left"><strong>Chest</strong></ion-label>
+            </ion-list-header>
+
+            <ion-row>
+                <ion-col size="8">
+
+               <ion-item  detil="false" color="paper" class="app-font-16" routerLink="/pbench" (click)="presentLoading()">
+                    <strong>Bench Press Pyramid</strong>
+                </ion-item>
+            </ion-col>
+            <ion-col size="4">
+
+                   <ion-item  detil="false" color="tertiary" routerLink="/pbench/pbenchhist" class="app-font-12 ">Progress</ion-item>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col size="8">
+
+               <ion-item  detil="false" color="darkpaper" class="app-font-16" routerLink="/pneckpress" (click)="presentLoading()">
+                    <strong>Neck Bench Press Pyramid</strong>
+                </ion-item>
+            </ion-col>
+            <ion-col size="4">
+
+                   <ion-item  detil="false" color="tertiary" routerLink="/pneckpress/pneckpresshist" class="app-font-12 ">Progress</ion-item>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col size="8">
+
+               <ion-item  detil="false" color="paper" class="app-font-16" routerLink="/pfly" (click)="presentLoading()">
+                    <strong>Flys Pyramid</strong>
+                </ion-item>
+            </ion-col>
+            <ion-col size="4">
+
+                   <ion-item  detil="false" color="tertiary" routerLink="/pfly/pflyhist" class="app-font-12 ">Progress</ion-item>
+                </ion-col>
+            </ion-row>
+
+
+            <ion-list-header color="medium">
+                <ion-label class="app-font-16 ion-padding-left"><strong>Deltoids</strong></ion-label>
+            </ion-list-header>
+
+            <ion-row>
+                <ion-col size="8">
+
+               <ion-item  detil="false" color="darkpaper" class="app-font-16" routerLink="/pbbuprightrow" (click)="presentLoading()">
+                    <strong>Upright Row Pyramid</strong>
+                </ion-item>
+            </ion-col>
+            <ion-col size="4">
+
+                   <ion-item  detil="false" color="tertiary" routerLink="/pbbuprightrow/pbbuprightrowhist" class="app-font-12 ">Progress</ion-item>
+                </ion-col>
+            </ion-row>
+
+
+            <ion-row>
+                <ion-col size="8">
+
+               <ion-item  detil="false" color="paper" class="app-font-16" routerLink="/platraise" (click)="presentLoading()">
+                    <strong>Lateral Raise Pyramid</strong>
+                </ion-item>
+            </ion-col>
+            <ion-col size="4">
+
+                   <ion-item  detil="false" color="tertiary" routerLink="/platraise/platraisehist" class="app-font-12 ">Progress</ion-item>
+                </ion-col>
+            </ion-row>
+
+
+            <ion-row>
+                <ion-col size="8">
+
+               <ion-item  detil="false" color="darkpaper" class="app-font-16" routerLink="/pbolatraise" (click)="presentLoading()">
+                    <strong>Bentover Lateral Raise Pyramid</strong>
+                </ion-item>
+            </ion-col>
+            <ion-col size="4">
+
+                   <ion-item  detil="false" color="tertiary" routerLink="/pbolatraise/pbolatraisehist" class="app-font-12 ">Progress</ion-item>
+                </ion-col>
+            </ion-row>
+
+
+            <ion-list-header color="medium">
+                <ion-label class="app-font-16 ion-padding-left"><strong>Quadriceps</strong></ion-label>
+            </ion-list-header>
+            <ion-row>
+                <ion-col size="8">
+
+               <ion-item  detil="false" color="darkpaper" class="app-font-16" routerLink="/psquat" (click)="presentLoading()">
+                    <strong>Squat Pyramid</strong>
+                </ion-item>
+            </ion-col>
+            <ion-col size="4">
+
+                   <ion-item  detil="false" color="tertiary" routerLink="/psquat/psquathist" class="app-font-12 ">Progress</ion-item>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col size="8">
+
+               <ion-item  detil="false" color="paper" class="app-font-16" routerLink="/plegpress" (click)="presentLoading()">
+                    <strong>Leg Press Pyramid</strong>
+                </ion-item>
+            </ion-col>
+            <ion-col size="4">
+
+                   <ion-item  detil="false" color="tertiary" routerLink="/plegpress/plegpresshist" class="app-font-12 ">Progress</ion-item>
+                </ion-col>
+            </ion-row>
+
+
+            <ion-row>
+                <ion-col size="8">
+
+               <ion-item  detil="false" color="darkpaper" class="app-font-16" routerLink="/plegext" (click)="presentLoading()">
+                    <strong>Leg Extension Pyramid</strong>
+                </ion-item>
+            </ion-col>
+            <ion-col size="4">
+
+                   <ion-item  detil="false" color="tertiary" routerLink="/plegext/plegexthist" class="app-font-12 ">Progress</ion-item>
+                </ion-col>
+            </ion-row>
+
+
+            <ion-row>
+                <ion-col size="8">
+
+               <ion-item  detil="false" color="paper" class="app-font-16" routerLink="/phacklift" (click)="presentLoading()">
+                    <strong>Hack Lift Pyramid</strong>
+                </ion-item>
+            </ion-col>
+            <ion-col size="4">
+
+                   <ion-item  detil="false" color="tertiary" routerLink="/phacklift/phacklifthist" class="app-font-12 ">Progress</ion-item>
+                </ion-col>
+            </ion-row>
+
+
+            <ion-list-header color="medium">
+                <ion-label class="app-font-16 ion-padding-left"><strong>Triceps</strong></ion-label>
+            </ion-list-header>
+
+            <ion-row>
+                <ion-col size="8">
+
+               <ion-item  detil="false" color="darkpaper" class="app-font-16" routerLink="/pclosebench" (click)="presentLoading()">
+                    <strong>Close Grip Bench Press Pyramid</strong></ion-item>
+                </ion-col>
+                <ion-col size="4">
+
+                   <ion-item  detil="false" color="tertiary" routerLink="/pclosebench/pclosebenchthist" class="app-font-12 ">Progress</ion-item>
+                </ion-col>
+            </ion-row>
+
+
+            <ion-row>
+                <ion-col size="8">
+
+               <ion-item  detil="false" color="paper" class="app-font-16" routerLink="/ppushdown" (click)="presentLoading()">
+                    <strong>Triceps Pushdown Pyramid</strong></ion-item>
+                </ion-col>
+                <ion-col size="4">
+
+                   <ion-item  detil="false" color="tertiary" routerLink="/ppushdown/ppushdownhist" class="app-font-12 ">Progress</ion-item>
+                </ion-col>
+            </ion-row>
+
+
+            <ion-row>
+                <ion-col size="8">
+
+               <ion-item  detil="false" color="darkpaper" class="app-font-16" routerLink="/propepushdown" (click)="presentLoading()">
+                    <strong>Rope Pushdown Pyramid</strong></ion-item>
+                </ion-col>
+                <ion-col size="4">
+
+                   <ion-item  detil="false" color="tertiary" routerLink="/propepushdown/propepushdownhist" class="app-font-12 ">Progress</ion-item>
+                </ion-col>
+            </ion-row>
+
+
+            <ion-row>
+                <ion-col size="8">
+
+               <ion-item  detil="false" color="paper" class="app-font-16" routerLink="/pohext" (click)="presentLoading()">
+                    <strong>Overhead Extension Pyramid</strong></ion-item>
+                </ion-col>
+                <ion-col size="4">
+
+                   <ion-item  detil="false" color="tertiary" routerLink="/pohext/pohexthist" class="app-font-12 ">Progress</ion-item>
+                </ion-col>
+            </ion-row>
+
+    </ion-col>
+</ion-row>
+</ion-grid>
+</ion-content>

@@ -1,0 +1,250 @@
+<ion-header><br/><br/>
+    <meta name="Description" content="chest exercises">
+    <ion-toolbar class=" ion-padding-top ion-text-center" color="midnightblue">
+           <ion-buttons slot="start">
+            <ion-back-button text="" size="small"></ion-back-button>
+        </ion-buttons>
+        <strong>Available Chest Exercises</strong>
+    </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content class="ion-no-padding" color="midnightblue">
+    <ion-grid>
+        <ion-row>
+            <ion-col size="12" size-lg="8" Size-md="8" Size-sm="8" offset-lg="2" offset-md="2" offset-sm="2">
+
+
+                        <ion-list-header color="medium">
+                            <ion-label class="app-font-18 ion-padding-left"><strong>Upper Pecs</strong></ion-label>
+                        </ion-list-header>
+                        <ion-row>
+                            <ion-col size="8">
+
+                                <ion-item  color="paper" class="app-font-18" routerLink="/inclinedbpress"
+                                    (click)="presentLoading()">
+                                    <strong>Incline Dumbbell Press</strong>
+                                </ion-item>
+                            </ion-col>
+                            <ion-col size="4">
+
+                                <ion-item  color="tertiary" routerLink="/inclinedbpress/inclinedbpresshist">Progress</ion-item>
+                            </ion-col>
+                        </ion-row>
+
+
+                        <ion-row>
+                            <ion-col size="8">
+
+                                <ion-item  color="darkpaper" class="app-font-18" routerLink="/inclinebench"
+                                    (click)="presentLoading()">
+                                    <strong>Incline Bench Press</strong>
+                                </ion-item>
+                            </ion-col>
+                            <ion-col size="4">
+
+                                <ion-item  color="tertiary" routerLink="/inclinebench/inclinebenchhist">Progress</ion-item>
+                            </ion-col>
+                        </ion-row>
+
+                        <ion-row>
+                            <ion-col size="8">
+
+                                <ion-item  color="paper" class="app-font-18" routerLink="/inclinefly"
+                                    (click)="presentLoading()">
+                                    <strong>Incline Fly</strong>
+                                </ion-item>
+                            </ion-col>
+                            <ion-col size="4">
+
+                                <ion-item  color="tertiary" routerLink="/inclinefly/inclineflyhist">Progress</ion-item>
+                            </ion-col>
+                        </ion-row>
+
+
+                        <ion-list-header color="medium">
+                            <ion-label class="app-font-18 ion-padding-left"><strong>Outer Pecs</strong></ion-label>
+                        </ion-list-header>
+
+                        <ion-row>
+                            <ion-col size="8">
+
+                                <ion-item  color="darkpaper" class="app-font-18" routerLink="/widegripbp"
+                                    (click)="presentLoading()">
+                                    <strong>Wide Grip Bench Press</strong>
+                                </ion-item>
+                            </ion-col>
+                            <ion-col size="4">
+
+                                <ion-item  color="tertiary" routerLink="/widegripbp/widegripbphist">Progress</ion-item>
+                            </ion-col>
+                        </ion-row>
+
+                        <ion-row>
+                            <ion-col size="8">
+
+                                <ion-item  color="paper" class="app-font-16" routerLink="/pneckpress"
+                                    (click)="presentLoading()">
+                                    <strong>Neck Bench Press Pyramid</strong>
+                                </ion-item>
+                            </ion-col>
+                            <ion-col size="4">
+
+                                <ion-item  color="tertiary" routerLink="/pneckpress/pneckpresshist">Progress</ion-item>
+                            </ion-col>
+                        </ion-row>
+
+                        <ion-row>
+                            <ion-col size="8">
+
+                                <ion-item  color="darkpaper" class="app-font-18" routerLink="/pushuphw"
+                                    (click)="presentLoading()">
+                                    <strong>Hands Wide Pushup</strong>
+                                </ion-item>
+                            </ion-col>
+                            <ion-col size="4">
+
+                                <ion-item  color="tertiary" routerLink="/pushuphw/pushuphwhist">Progress</ion-item>
+                            </ion-col>
+                        </ion-row>
+
+                        <ion-list-header color="medium">
+                            <ion-label class="app-font-18 ion-padding-left"><strong>Middle Pecs</strong></ion-label>
+                        </ion-list-header>
+
+                        <ion-row>
+                            <ion-col size="8">
+
+                                <ion-item  color="paper" class="app-font-18" routerLink="/benchpress"
+                                    (click)="presentLoading()">
+                                    <strong>Bench Press</strong>
+                                </ion-item>
+                            </ion-col>
+                            <ion-col size="4">
+
+                                <ion-item  color="tertiary" routerLink="/benchpress/benchpresshist">Progress</ion-item>
+                            </ion-col>
+                        </ion-row>
+
+                        <ion-row>
+                            <ion-col size="8">
+
+                                <ion-item  color="paper" class="app-font-16" routerLink="/pbench"
+                                    (click)="presentLoading()">
+                                    <strong>Bench Press Pyramid</strong>
+                                </ion-item>
+                            </ion-col>
+                            <ion-col size="4">
+
+                                <ion-item  color="tertiary" routerLink="/pbench/pbenchhist">Progress</ion-item>
+                            </ion-col>
+                        </ion-row>
+
+                        <ion-row>
+                            <ion-col size="8">
+
+                                <ion-item  color="paper" class="app-font-18" routerLink="/ftfbench"
+                                    (click)="presentLoading()">
+                                    <strong> 5 x 5 Bench Press</strong>
+                                </ion-item>
+                            </ion-col>
+                            <ion-col size="4">
+
+                                <ion-item  color="tertiary" routerLink="/ftfbench/ftfbenchhist">Progress</ion-item>
+                            </ion-col>
+                        </ion-row>
+
+                        <ion-row>
+                            <ion-col size="8">
+
+                                <ion-item  color="darkpaper" class="app-font-18" routerLink="/dbbench"
+                                    (click)="presentLoading()">
+                                    <strong>Dumbbell Bench Press</strong>
+                                </ion-item>
+                            </ion-col>
+                            <ion-col size="4">
+
+                                <ion-item  color="tertiary" routerLink="/dbbench/dbbenchhist">Progress</ion-item>
+                            </ion-col>
+                        </ion-row>
+
+                        <ion-row>
+                            <ion-col size="8">
+
+                                <ion-item  color="paper" class="app-font-18" routerLink="/fly"
+                                    (click)="presentLoading()">
+                                    <strong>Flys</strong>
+                                </ion-item>
+                            </ion-col>
+                            <ion-col size="4">
+
+                                <ion-item  color="tertiary" routerLink="/fly/flyhist">Progress</ion-item>
+                            </ion-col>
+                        </ion-row>
+
+                        <ion-row>
+                            <ion-col size="8">
+
+                                <ion-item  color="paper" class="app-font-16" routerLink="/pfly"
+                                    (click)="presentLoading()">
+                                    <strong>Flys Pyramid</strong>
+                                </ion-item>
+                            </ion-col>
+                            <ion-col size="4">
+
+                                <ion-item  color="tertiary" routerLink="/pfly/pflyhist">Progress</ion-item>
+                            </ion-col>
+                        </ion-row>
+
+                        <ion-row>
+                            <ion-col size="8">
+
+                                <ion-item routerLink="/pecdeck" color="darkpaper" expand="block" class="app-font-18"
+                                    (click)="presentLoading()" class="text-capitalize">
+                                    <strong>Pec Deck Flys</strong>
+                                </ion-item>
+                            </ion-col>
+                            <ion-col size="4">
+
+                                <ion-item  color="tertiary" routerLink="/pecdeck/pecdeckhist">Progress</ion-item>
+                            </ion-col>
+                        </ion-row>
+
+
+                        <ion-list-header color="medium">
+                            <ion-label class="app-font-18 ion-padding-left"><strong>Lower Pecs</strong></ion-label>
+                        </ion-list-header>
+                        <ion-row>
+                            <ion-col size="8">
+
+                                <ion-item  color="paper" class="app-font-18" routerLink="/chestdip"
+                                    (click)="presentLoading()">
+                                    <strong>Chest Dip</strong>
+                                </ion-item>
+                            </ion-col>
+                            <ion-col size="4">
+
+                                <ion-item  color="tertiary" routerLink="/chestdip/chestdiphist">Progress</ion-item>
+                            </ion-col>
+                        </ion-row>
+
+                        <ion-row>
+                            <ion-col size="8">
+
+                                <ion-item  color="darkpaper" class="app-font-18" routerLink="/declinepress"
+                                    (click)="presentLoading()">
+                                    <strong>Decline Bench Press</strong>
+                                </ion-item>
+                            </ion-col>
+                            <ion-col size="4">
+
+                                <ion-item  color="tertiary" routerLink="/declinepress/declinepresshist">Progress</ion-item>
+                            </ion-col>
+                        </ion-row>
+
+
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

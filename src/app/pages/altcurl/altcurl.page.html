@@ -1,0 +1,2916 @@
+<ion-header
+  ><br /><br />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1"
+  />
+  <ion-toolbar color="liteblue" mode="ios">
+    <ion-buttons slot="start">
+      <ion-button color="dark" (click)="goBack()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title class="ion-no-padding">
+      <ion-button
+        size="large"
+
+        class="ion-text-capitalize"
+        color="paper"
+        (click)="onButtonClick()"
+        (click)="ScrollToTop()"
+      >
+        <strong
+          >Alternate Curl<br />
+          instructions</strong
+        >
+      </ion-button>
+    </ion-title>
+  </ion-toolbar>
+
+  <ion-item style="height: 24vh"
+    color="crimson"
+    *ngIf="!oneSetsClicked && !twoSetsClicked && !threeSetsClicked && !fourSetsClicked && !fiveSetsClicked && !sixSetsClicked"
+  >
+    <ion-col class="ion-text-center">
+      <img style="height: 25vh" alt="alternate curl" src="assets/img/ezaltcurl.png" />
+    </ion-col>
+  </ion-item>
+
+</ion-header>
+
+<ion-content [scrollEvents]="true" color="liteblue">
+  <ion-grid class="ion-margin-left ion-padding-left">
+    <ion-col
+      size="12"
+      size-lg="8"
+      Size-md="8"
+      Size-sm="8"
+      offset-lg="2"
+      offset-md="2"
+      offset-sm="2"
+    >
+      <ion-card color="midnightblue" *ngIf="buttonClicked">
+        <ion-card-content class="app-font-18">
+          <ion-card color="paper" class="ion-padding ion-no-margin app-font-18">
+            <strong><app-repsinstruct></app-repsinstruct></strong>
+          </ion-card>
+          <ion-item
+            style="height: 0.5vh"
+            color="danger"
+            class="ion-text-center"
+          >
+          </ion-item>
+          <br />
+
+          <p class="app-font-16">
+            <ion-label class="ion-text-center"
+              ><strong>Targets Outer & Inner Bicep Heads</strong></ion-label
+            >
+            <br />
+            1. Hold a pair of dumbbells at arm length by your sides, with thumbs
+            forward and resting against the inside of the plates. <br /><br />
+            2. While keeping your upper arms vertical curl one dumbbell while
+            rotating it until your palm faces upward. <br /><br />
+            3. Lower the dumbbell, and repeat with the opposite arm.
+          </p>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card color="midnightblue" *ngIf="recomWTClicked">
+        <ion-card-content class="app-font-18">
+          <app-weighthelp></app-weighthelp>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card
+        color="primary"
+        class="ion-no-margin ion-no-padding"
+        *ngIf="latestClicked"
+      >
+        <ion-grid>
+          <ion-row
+            class="app-font-13 ion-no-padding"
+            *ngFor="let item of altcurlOne | async"
+          >
+            <ion-col size="1" class="ion-no-padding ion-text-center"
+              ><strong></strong
+            ></ion-col>
+            <ion-col size="3" class="ion-no-padding ion-text-center"
+              ><strong>Date</strong></ion-col
+            >
+            <ion-col size="4" class="ion-no-padding ion-text-center"
+              ><strong>Wt x Reps</strong>
+            </ion-col>
+            <ion-col size="2.5" class="ion-no-padding ion-text-right"
+              ><strong>%1RM</strong>
+            </ion-col>
+            <ion-col size="1.5" class="ion-no-padding ion-text-right"
+              ><strong>1RM</strong></ion-col
+            >
+          </ion-row>
+
+          <ion-row
+            class="ion-padding-top"
+            *ngFor="let item of altcurlOne | async"
+          >
+            <ion-col size="1" class="ion-no-padding ion-text-center"
+              ><strong>1</strong></ion-col
+            >
+            <ion-col size="3.5" class="ion-no-padding ion-text-center">
+              <strong>{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}</strong>
+            </ion-col>
+            <ion-col size="4" class="ion-no-padding ion-text-center"
+              ><strong>{{item.wtToday }} x {{item.repsToday }}</strong>
+            </ion-col>
+            <ion-col size="2" class="ion-no-padding ion-text-right"
+              ><strong>{{item.percentRM }}%</strong></ion-col
+            >
+            <ion-col size="1.5" class="ion-no-padding ion-text-right">
+              <strong>{{item.oneRMToday}}</strong>
+            </ion-col>
+          </ion-row>
+
+          <ion-row
+            class="app-font-12"
+            class="ion-padding-top"
+            *ngFor="let item of altcurlTwo$ | async"
+          >
+            <ion-col size="1" class="ion-no-padding ion-text-center"
+              ><strong>2</strong></ion-col
+            >
+            <ion-col size="3.5" class="ion-no-padding ion-text-center">
+              <strong>{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}</strong>
+            </ion-col>
+            <ion-col size="4" class="ion-no-padding ion-text-center"
+              ><strong>{{item.wtToday }} x {{item.repsToday }}</strong>
+            </ion-col>
+            <ion-col size="2" class="ion-no-padding ion-text-right"
+              ><strong>{{item.percentRM }}%</strong></ion-col
+            >
+            <ion-col size="1.5" class="ion-no-padding ion-text-right">
+              <strong>{{item.oneRMToday}}</strong>
+            </ion-col>
+          </ion-row>
+          <ion-row
+            class="app-font-12"
+            class="ion-padding-top"
+            *ngFor="let item of altcurlThree | async"
+          >
+            <ion-col size="1" class="ion-no-padding ion-text-center"
+              ><strong>3</strong></ion-col
+            >
+            <ion-col size="3.5" class="ion-no-padding ion-text-center">
+              <strong>{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}</strong>
+            </ion-col>
+            <ion-col size="4" class="ion-no-padding ion-text-center"
+              ><strong>{{item.wtToday }} x {{item.repsToday }}</strong>
+            </ion-col>
+            <ion-col size="2" class="ion-no-padding ion-text-right"
+              ><strong>{{item.percentRM }}%</strong></ion-col
+            >
+            <ion-col size="1.5" class="ion-no-padding ion-text-right">
+              <strong>{{item.oneRMToday}}</strong>
+            </ion-col>
+          </ion-row>
+          <ion-row
+            class="app-font-12"
+            class="ion-padding-top"
+            *ngFor="let item of altcurlFour | async"
+          >
+            <ion-col size="1" class="ion-no-padding ion-text-center"
+              ><strong>4</strong></ion-col
+            >
+            <ion-col size="3.5" class="ion-no-padding ion-text-center">
+              <strong>{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}</strong>
+            </ion-col>
+            <ion-col size="4" class="ion-no-padding ion-text-center"
+              ><strong>{{item.wtToday }} x {{item.repsToday }}</strong>
+            </ion-col>
+            <ion-col size="2" class="ion-no-padding ion-text-right"
+              ><strong>{{item.percentRM }}%</strong></ion-col
+            >
+            <ion-col size="1.5" class="ion-no-padding ion-text-right">
+              <strong>{{item.oneRMToday}}</strong>
+            </ion-col>
+          </ion-row>
+          <ion-row
+            class="app-font-12"
+            class="ion-padding-top"
+            *ngFor="let item of altcurlFive | async"
+          >
+            <ion-col size="1" class="ion-no-padding ion-text-center"
+              ><strong>5</strong></ion-col
+            >
+            <ion-col size="3.5" class="ion-no-padding ion-text-center">
+              <strong>{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}</strong>
+            </ion-col>
+            <ion-col size="4" class="ion-no-padding ion-text-center"
+              ><strong>{{item.wtToday }} x {{item.repsToday }}</strong>
+            </ion-col>
+            <ion-col size="2" class="ion-no-padding ion-text-right"
+              ><strong>{{item.percentRM }}%</strong></ion-col
+            >
+            <ion-col size="1.5" class="ion-no-padding ion-text-right">
+              <strong>{{item.oneRMToday}}</strong>
+            </ion-col>
+          </ion-row>
+          <ion-row
+            class="app-font-12"
+            class="ion-padding-top"
+            *ngFor="let item of altcurlSix | async"
+          >
+            <ion-col size="1" class="ion-no-padding ion-text-center"
+              ><strong>6</strong></ion-col
+            >
+            <ion-col size="3.5" class="ion-no-padding ion-text-center">
+              <strong>{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}</strong>
+            </ion-col>
+            <ion-col size="4" class="ion-no-padding ion-text-center"
+              ><strong>{{item.wtToday }} x {{item.repsToday }}</strong>
+            </ion-col>
+            <ion-col size="2" class="ion-no-padding ion-text-right"
+              ><strong>{{item.percentRM }}%</strong></ion-col
+            >
+            <ion-col size="1.5" class="ion-no-padding ion-text-right">
+              <strong>{{item.oneRMToday}}</strong>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+
+      <ion-card color="liteblue" *ngIf="notesClicked">
+        <ion-button
+          expand="block"
+          color="secondary"
+          class="app-font-12"
+          (click)="onnotesOneClick()"
+        >
+          Set 1 Notes
+        </ion-button>
+        <ion-card *ngIf="notesOneClicked" class="ion-no-padding ion-no-margin">
+          <form
+            [formGroup]="addNotesForm"
+            (submit)="AltcurlNotesOne(addNotesForm)"
+            novalidate
+          >
+            <ion-textarea
+              formControlName="note"
+              type="string"
+              placeholder="add notes here"
+              [class.invalid]="!!addNotesForm.controls['note'].valid && !!addNotesForm.controls['note'].dirty"
+            >
+            </ion-textarea>
+            <ion-buttons>
+              <ion-button
+                slot="icon-only"
+                type="submit"
+                [disabled]="!addNotesForm.valid"
+              >
+                <ion-icon color="secondary" name="create"> </ion-icon>
+              </ion-button>
+            </ion-buttons>
+
+            <ion-item
+              class="ion-no-padding ion-no-margin"
+              *ngFor="let item of altcurlNotes1 | async"
+              class="text-wrap"
+              color="paper"
+            >
+              <ion-col size="4" class="app-font-12 ion-no-padding"
+                >{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}</ion-col
+              >
+              <ion-col class="app-font-12"> {{item.note}}</ion-col>
+            </ion-item>
+          </form>
+        </ion-card>
+        <ion-button
+          expand="block"
+          color="secondary"
+          class="app-font-12"
+          (click)="onnotesTwoClick()"
+        >
+          Set 2 Notes
+        </ion-button>
+
+        <ion-card *ngIf="notesTwoClicked" class="ion-no-padding ion-no-margin">
+          <form
+            [formGroup]="addNotesForm"
+            (submit)="AltcurlNotesTwo(addNotesForm)"
+            novalidate
+          >
+            <ion-textarea
+              formControlName="note"
+              type="string"
+              placeholder="add notes here"
+              [class.invalid]="!!addNotesForm.controls['note'].valid && !!addNotesForm.controls['note'].dirty"
+            >
+            </ion-textarea>
+            <ion-buttons>
+              <ion-button
+                slot="icon-only"
+                type="submit"
+                [disabled]="!addNotesForm.valid"
+              >
+                <ion-icon color="secondary" name="create"> </ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </form>
+          <ion-item
+            class="ion-no-padding ion-no-margin"
+            *ngFor="let item of altcurlNotes2 | async"
+            class="text-wrap"
+            color="paper"
+          >
+            <ion-col size="4" class="app-font-12"
+              >{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}
+            </ion-col>
+            <ion-col class="app-font-12"> {{item.note}}</ion-col>
+          </ion-item>
+        </ion-card>
+
+        <ion-button
+          expand="block"
+          color="secondary"
+          class="app-font-12"
+          (click)="onnotesThreeClick()"
+        >
+          Set 3 Notes
+        </ion-button>
+        <ion-card
+          *ngIf="notesThreeClicked"
+          class="ion-no-padding ion-no-margin"
+        >
+          <form
+            [formGroup]="addNotesForm"
+            (submit)="AltcurlNotesThree(addNotesForm)"
+            novalidate
+          >
+            <ion-textarea
+              formControlName="note"
+              type="string"
+              placeholder="add notes here"
+              [class.invalid]="!!addNotesForm.controls['note'].valid && !!addNotesForm.controls['note'].dirty"
+            >
+            </ion-textarea>
+            <ion-buttons>
+              <ion-button
+                slot="icon-only"
+                type="submit"
+                [disabled]="!addNotesForm.valid"
+              >
+                <ion-icon color="secondary" name="create"> </ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </form>
+          <ion-item
+            class="ion-no-padding ion-no-margin"
+            *ngFor="let item of altcurlNotes3 | async"
+            class="text-wrap"
+            color="paper"
+          >
+            <ion-col size="4" class="app-font-12"
+              >{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}
+            </ion-col>
+            <ion-col class="app-font-12"> {{item.note}}</ion-col>
+          </ion-item>
+        </ion-card>
+        <ion-button
+          expand="block"
+          color="secondary"
+          class="app-font-12"
+          (click)="onnotesFourClick()"
+        >
+          Set 4 Notes
+        </ion-button>
+        <ion-card *ngIf="notesFourClicked" class="ion-no-padding ion-no-margin">
+          <form
+            [formGroup]="addNotesForm"
+            (submit)="AltcurlNotesFour(addNotesForm)"
+            novalidate
+          >
+            <ion-textarea
+              formControlName="note"
+              type="string"
+              placeholder="add notes here"
+              [class.invalid]="!!addNotesForm.controls['note'].valid && !!addNotesForm.controls['note'].dirty"
+            >
+            </ion-textarea>
+            <ion-buttons>
+              <ion-button
+                slot="icon-only"
+                type="submit"
+                [disabled]="!addNotesForm.valid"
+              >
+                <ion-icon color="secondary" name="create"> </ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </form>
+          <ion-item
+            class="ion-no-padding ion-no-margin"
+            *ngFor="let item of altcurlNotes4 | async"
+            class="text-wrap"
+            color="paper"
+          >
+            <ion-col size="4" class="app-font-12"
+              >{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}
+            </ion-col>
+            <ion-col class="app-font-12"> {{item.note}}</ion-col>
+          </ion-item>
+        </ion-card>
+        <ion-button
+          expand="block"
+          color="secondary"
+          class="app-font-12"
+          (click)="onnotesFiveClick()"
+        >
+          Set 5 Notes
+        </ion-button>
+        <ion-card *ngIf="notesFiveClicked" class="ion-no-padding ion-no-margin">
+          <form
+            [formGroup]="addNotesForm"
+            (submit)="AltcurlNotesFive(addNotesForm)"
+            novalidate
+          >
+            <ion-textarea
+              formControlName="note"
+              type="string"
+              placeholder="add notes here"
+              [class.invalid]="!!addNotesForm.controls['note'].valid && !!addNotesForm.controls['note'].dirty"
+            >
+            </ion-textarea>
+            <ion-buttons>
+              <ion-button
+                slot="icon-only"
+                type="submit"
+                [disabled]="!addNotesForm.valid"
+              >
+                <ion-icon color="secondary" name="create"> </ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </form>
+          <ion-item
+            class="ion-no-padding ion-no-margin"
+            *ngFor="let item of altcurlNotes5 | async"
+            class="text-wrap"
+            color="paper"
+          >
+            <ion-col size="4" class="app-font-12"
+              >{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}
+            </ion-col>
+            <ion-col class="app-font-12"> {{item.note}}</ion-col>
+          </ion-item>
+        </ion-card>
+        <ion-button
+          expand="block"
+          color="secondary"
+          class="app-font-12"
+          (click)="onnotesSixClick()"
+        >
+          Set 6 Notes
+        </ion-button>
+        <ion-card *ngIf="notesSixClicked" class="ion-no-padding ion-no-margin">
+          <form
+            [formGroup]="addNotesForm"
+            (submit)="AltcurlNotesSix(addNotesForm)"
+            novalidate
+          >
+            <ion-textarea
+              formControlName="note"
+              type="string"
+              placeholder="add notes here"
+              [class.invalid]="!!addNotesForm.controls['note'].valid && !!addNotesForm.controls['note'].dirty"
+            >
+            </ion-textarea>
+            <ion-buttons>
+              <ion-button
+                slot="icon-only"
+                type="submit"
+                [disabled]="!addNotesForm.valid"
+              >
+                <ion-icon color="secondary" name="create"> </ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </form>
+          <ion-item
+            class="ion-no-padding ion-no-margin"
+            *ngFor="let item of altcurlNotes6 | async"
+            class="text-wrap"
+            color="paper"
+          >
+            <ion-col size="4" class="app-font-12"
+              >{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}
+            </ion-col>
+            <ion-col class="app-font-12"> {{item.note}}</ion-col>
+          </ion-item>
+        </ion-card>
+      </ion-card>
+
+      <ion-card
+        class="ion-no-padding"
+        color="liteblue"
+        *ngIf="warmupClicked"
+        mode="md"
+      >
+      <div
+        class="ion-no-padding ion-no-margin"
+        *ngIf="!workoutwarmupClicked && !lowrepsClicked"
+      >
+      <ion-row style="height: 8vh">
+        <ion-col class="app-font-16 ion-text-center ion-text-uppercase">
+          <ion-text color="dark"><strong>Pick 1 to 6 sets below </strong></ion-text><br/>
+            <ion-text class="app-font-14 ion-text-capitalize" color="dark"> <strong>The <ion-button size="small" shape="round" color="paper"></ion-button> sets are Recommended</strong>
+          </ion-text>
+        </ion-col>
+      </ion-row><br/>
+
+      <ion-row>
+        <ion-col Class="ion-text-left">
+          <ion-label color="dark" class="app-font-15 ion-text-capitalize">
+            <strong>Strength: 3 reps minimum</strong>
+          </ion-label>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-text-center">
+        <ion-col>
+          <ion-button
+            size="small"
+            shape="round"
+            color="tertiary"
+            (click)="strength()"
+            (click)="oneSetsClick()"
+            (click)="onLasttimeClick()"
+            (click)="tinyN()"
+            (click)="onWorkoutweightClick()"
+            >1
+          </ion-button>
+        </ion-col>
+
+        <ion-col  >
+          <ion-button
+            size="small"
+            shape="round"
+            color="tertiary"
+            (click)="strength()"
+            (click)="twoSetsClick()"
+            (click)="onLasttimeClick()"
+            (click)="tinyN()"
+            (click)="onWorkoutweightClick()"
+            ><strong >2</strong>
+          </ion-button>
+        </ion-col>
+
+        <ion-col>
+          <ion-button
+            size="small"
+            shape="round"
+            color="tertiary"
+            (click)="strength()"
+            (click)="threeSetsClick()"
+            (click)="onLasttimeClick()"
+            (click)="tinyN()"
+            (click)="onWorkoutweightClick()"
+            >3
+          </ion-button>
+        </ion-col>
+
+        <ion-col>
+          <ion-button
+            size="small"
+            shape="round"
+            color="paper"
+            (click)="strength()"
+            (click)="fourSetsClick()"
+            (click)="onLasttimeClick()"
+            (click)="tinyN()"
+            (click)="onWorkoutweightClick()"
+            >4
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button
+            size="small"
+            shape="round"
+            color="paper"
+            (click)="strength()"
+            (click)="fiveSetsClick()"
+            (click)="onLasttimeClick()"
+            (click)="tinyN()"
+            (click)="onWorkoutweightClick()"
+            >5
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button
+            size="small"
+            shape="round"
+            color="paper"
+            (click)="strength()"
+            (click)="sixSetsClick()"
+            (click)="onLasttimeClick()"
+            (click)="tinyN()"
+            (click)="onWorkoutweightClick()"
+            >6
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row >
+        <ion-col class="ion-text-left"><br/>
+          <ion-label color="dark" class="app-font-15 ion-text-capitalize">
+            <strong>Strength & Muscle: 6 reps minimum</strong>
+          </ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-text-center">
+        <ion-col>
+          <ion-button
+            size="small"
+            shape="round"
+            color="tertiary"
+            (click)="strengthandmuscle()"
+            (click)="oneSetsClick()"
+            (click)="onLasttimeClick()"
+            (click)="tinyN()"
+            (click)="onWorkoutweightClick()"
+            >1
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button
+            size="small"
+            shape="round"
+            color="tertiary"
+            (click)="strengthandmuscle()"
+            (click)="twoSetsClick()"
+            (click)="onLasttimeClick()"
+            (click)="tinyN()"
+            (click)="onWorkoutweightClick()"
+            >2
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button
+            size="small"
+            shape="round"
+            color="paper"
+            (click)="strengthandmuscle()"
+            (click)="threeSetsClick()"
+            (click)="onLasttimeClick()"
+            (click)="tinyN()"
+            (click)="onWorkoutweightClick()"
+            >3
+          </ion-button>
+        </ion-col>
+
+        <ion-col>
+          <ion-button
+            size="small"
+            shape="round"
+            color="paper"
+            (click)="strengthandmuscle()"
+            (click)="fourSetsClick()"
+            (click)="onLasttimeClick()"
+            (click)="tinyN()"
+            (click)="onWorkoutweightClick()"
+            >4
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button
+            size="small"
+            shape="round"
+            color="tertiary"
+            (click)="strengthandmuscle()"
+            (click)="fiveSetsClick()"
+            (click)="onLasttimeClick()"
+            (click)="tinyN()"
+            (click)="onWorkoutweightClick()"
+            >5
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button
+            size="small"
+            shape="round"
+            color="tertiary"
+            (click)="strengthandmuscle()"
+            (click)="sixSetsClick()"
+            (click)="onLasttimeClick()"
+            (click)="tinyN()"
+            (click)="onWorkoutweightClick()"
+            >6
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="ion-text-left"><br/>
+          <ion-label color="dark" class="app-font-15 ion-text-capitalize">
+            <strong>Muscle: 8 reps minimum</strong>
+          </ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-text-center">
+        <ion-col>
+          <ion-button
+            size="small"
+            shape="round"
+            color="tertiary"
+            (click)="muscle()"
+            (click)="oneSetsClick()"
+            (click)="onLasttimeClick()"
+            (click)="tinyN()"
+            (click)="onWorkoutweightClick()"
+            >1
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button
+            size="small"
+            shape="round"
+            color="tertiary"
+            (click)="muscle()"
+            (click)="twoSetsClick()"
+            (click)="onLasttimeClick()"
+            (click)="tinyN()"
+            (click)="onWorkoutweightClick()"
+            >2
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button
+            size="small"
+            shape="round"
+            color="paper"
+            (click)="muscle()"
+            (click)="threeSetsClick()"
+            (click)="onLasttimeClick()"
+            (click)="tinyN()"
+            (click)="onWorkoutweightClick()"
+            >3
+          </ion-button>
+        </ion-col>
+
+        <ion-col>
+          <ion-button
+            size="small"
+            shape="round"
+            color="tertiary"
+            (click)="muscle()"
+            (click)="fourSetsClick()"
+            (click)="onLasttimeClick()"
+            (click)="tinyN()"
+            (click)="onWorkoutweightClick()"
+            >4
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button
+            size="small"
+            shape="round"
+            color="tertiary"
+            (click)="muscle()"
+            (click)="fiveSetsClick()"
+            (click)="onLasttimeClick()"
+            (click)="tinyN()"
+            (click)="onWorkoutweightClick()"
+            >5
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button
+            size="small"
+            shape="round"
+            color="tertiary"
+            (click)="muscle()"
+            (click)="sixSetsClick()"
+            (click)="onLasttimeClick()"
+            (click)="tinyN()"
+            (click)="onWorkoutweightClick()"
+            >6
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="ion-text-label"><br/>
+          <ion-label
+            color="dark"
+            class="app-font-15 ion-text-capitalize"
+            (click)="muscleandendur()"
+            (click)="onLasttimeClick()"
+          >
+            <strong>Muscle/Endurance: 12 reps minimum</strong>
+          </ion-label>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-text-center">
+        <ion-col>
+          <ion-button
+            size="small"
+            shape="round"
+            color="tertiary"
+            (click)="muscleandendur()"
+            (click)="oneSetsClick()"
+            (click)="onLasttimeClick()"
+            (click)="tinyN()"
+            (click)="onWorkoutweightClick()"
+            >1
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button
+            size="small"
+            shape="round"
+            color="tertiary"
+            (click)="muscleandendur()"
+            (click)="twoSetsClick()"
+            (click)="onLasttimeClick()"
+            (click)="tinyN()"
+            (click)="onWorkoutweightClick()"
+            >2
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button
+            size="small"
+            shape="round"
+            color="paper"
+            (click)="muscleandendur()"
+            (click)="threeSetsClick()"
+            (click)="onLasttimeClick()"
+            (click)="tinyN()"
+            (click)="onWorkoutweightClick()"
+            >3
+          </ion-button>
+        </ion-col>
+
+        <ion-col>
+          <ion-button
+            size="small"
+            shape="round"
+            color="tertiary"
+            (click)="muscleandendur()"
+            (click)="fourSetsClick()"
+            (click)="onLasttimeClick()"
+            (click)="tinyN()"
+            (click)="onWorkoutweightClick()"
+            >4
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button
+            size="small"
+            shape="round"
+            color="tertiary"
+            (click)="muscleandendur()"
+            (click)="fiveSetsClick()"
+            (click)="onLasttimeClick()"
+            (click)="tinyN()"
+            (click)="onWorkoutweightClick()"
+            >5
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button
+            size="small"
+            shape="round"
+            color="tertiary"
+            (click)="muscleandendur()"
+            (click)="sixSetsClick()"
+            (click)="onLasttimeClick()"
+            (click)="tinyN()"
+            (click)="onWorkoutweightClick()"
+            >6
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row >
+        <ion-col class="ion-text-left"><br/>
+          <ion-label color="dark" class="app-font-15 ion-text-capitalize">
+            <strong>Toning/Endurance: 15 reps minimum</strong>
+          </ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-text-center">
+        <ion-col>
+          <ion-button
+            size="small"
+            shape="round"
+            color="tertiary"
+            (click)="endur()"
+            (click)="oneSetsClick()"
+            (click)="onLasttimeClick()"
+            (click)="tinyN()"
+            (click)="onWorkoutweightClick()"
+            >1
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button
+            size="small"
+            shape="round"
+            color="tertiary"
+            (click)="endur()"
+            (click)="twoSetsClick()"
+            (click)="onLasttimeClick()"
+            (click)="tinyN()"
+            (click)="onWorkoutweightClick()"
+            >2
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button
+            size="small"
+            shape="round"
+            color="paper"
+            (click)="endur()"
+            (click)="threeSetsClick()"
+            (click)="onLasttimeClick()"
+            (click)="tinyN()"
+            (click)="onWorkoutweightClick()"
+            >3
+          </ion-button>
+        </ion-col>
+
+        <ion-col>
+          <ion-button
+            size="small"
+            shape="round"
+            color="tertiary"
+            (click)="endur()"
+            (click)="fourSetsClick()"
+            (click)="onLasttimeClick()"
+            (click)="tinyN()"
+            (click)="onWorkoutweightClick()"
+            >4
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button
+            size="small"
+            shape="round"
+            color="tertiary"
+            (click)="endur()"
+            (click)="fiveSetsClick()"
+            (click)="onLasttimeClick()"
+            (click)="tinyN()"
+            (click)="onWorkoutweightClick()"
+            >5
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button
+            size="small"
+            shape="round"
+            color="tertiary"
+            (click)="endur()"
+            (click)="sixSetsClick()"
+            (click)="onLasttimeClick()"
+            (click)="tinyN()"
+            (click)="onWorkoutweightClick()"
+            >6
+          </ion-button>
+        </ion-col>
+      </ion-row>
+        <ion-item
+          style="height: 0.5vh"
+          color="danger"
+          class="ion-text-center"
+        >
+        </ion-item
+        ><br />
+      </div>
+        <br />
+
+        <div *ngIf="workoutwarmupClicked && lowrepsClicked">
+          <ion-row *ngIf="lowrepsClicked">
+            <ion-col
+              size="12"
+              color="midnightblue"
+              class="ion-text-center app-font-14 ion-no-padding"
+            >
+              <ion-text color="paper">{{msg2}} </ion-text>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-card>
+
+      <ion-card color="paper" *ngIf="oneSetsClicked" mode="md">
+        <ion-row>
+          <ion-col size="7">
+            <ion-button
+              size="small"
+              shape="round"
+              color="midnightblue"
+              class="app-font-14 ion-text-capitalize"
+              (click)="onWarmupWTClick()"
+              (click)="onLasttimeClick()"
+              ><strong>Suggested warmup:</strong>
+            </ion-button>
+          </ion-col>
+          <ion-col
+            size="3"
+            class="ion-padding-top"
+            *ngFor="let item of altcurlOne | async"
+          >
+            <strong>{{item.warmupWT}} x 15</strong>
+          </ion-col>
+        </ion-row>
+
+        <ion-card color="lavender" class="ion-no-padding ion-no-margin">
+          <ion-grid>
+            <ion-card
+              color="midnightblue"
+              class="ion-no-margin ion-no-padding"
+              *ngIf="workoutweightClicked"
+            >
+              <ion-row>
+                <ion-col
+                  class="app-font-14 ion-text-center"
+                  color="midnightblue"
+                  *ngFor="let item of altcurlOne | async"
+                >
+                  <strong>
+                    You are capable of
+                    <ion-text color="paper"
+                      >{{item.startWT}} x {{lowReps1}} first set</ion-text
+                    ><br />
+                  </strong>
+                </ion-col>
+              </ion-row>
+
+              <ion-row *ngFor="let item of altcurlOne | async">
+                <ion-col
+                  size="5.25"
+                  class="app-font-14 ion-text-left ion-text-capitalize"
+                >
+                  <strong>Sets 1 - {{msg3}} Goal</strong>
+                </ion-col>
+                <ion-col size="3.5" class="app-font-15">
+                  <ion-text color="paper">
+                    <strong>{{item.WT}} x {{item.minReps}} </strong>
+                  </ion-text>
+                </ion-col>
+                <ion-col size="3.5"></ion-col>
+              </ion-row>
+              <ion-row
+                style="height: 3.5vh"
+                *ngFor="let item of altcurlOne | async"
+              >
+                <ion-col size="5.25" class="app-font-14 ion-text-left">
+                  <strong>When Set {{msg3}} result is</strong>
+                </ion-col>
+                <ion-col
+                  size="3.25"
+                  class="ion-text-left app-font-15 ion-no-margin"
+                >
+                  <ion-text color="paper">
+                    <strong>{{item.WT}} x {{item.maxReps}} </strong>
+                  </ion-text>
+                </ion-col>
+                <ion-col size="3.5">{{item.deltaWT}} is added</ion-col>
+              </ion-row>
+            </ion-card>
+          </ion-grid> </ion-card
+        ><br />
+
+        <div *ngIf="tinyClicked ">
+          <ion-grid>
+            <ion-row
+              class="ion-no-margin app-font-14"
+              style="height: 3vh"
+              *ngFor="let item of altcurlOne | async"
+            >
+              <ion-col size="1" class="ion-text-right"
+                ><strong></strong
+              ></ion-col>
+              <ion-col size="4" class="app-font-12"
+                ><strong>Latest </strong></ion-col
+              >
+              <ion-col size="3" class="ion-text-left app-font-12"
+                ><strong>weight</strong></ion-col
+              >
+              <ion-col size="4" class="ion-text-left app-font-12"
+                ><strong>Reps </strong></ion-col
+              >
+            </ion-row>
+          </ion-grid>
+
+          <ion-grid>
+            <form
+              [formGroup]="oneSetsForm"
+              (submit)="WorkoutOne(oneSetsForm)"
+              novalidate
+            >
+            <ion-row class="ion-text-right">
+                <!-- <ion-col size="1" class="ion-text-left"
+                  ><strong>1</strong></ion-col
+                > -->
+
+
+                <ion-col size="4" *ngFor="let item of altcurlOne | async" >
+                  <ion-row class="ion-text-left app-font-12">
+                    <strong
+                      >{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}</strong
+                    >
+                  </ion-row>
+                  <ion-row class="ion-text-left" *ngFor="let item of altcurlOne | async" >
+                    <strong> {{item.wtToday }} X {{item.repsToday}}</strong>
+                  </ion-row>
+                </ion-col>
+              <ion-col size="3" class="ion-text-left">
+                  <ion-input
+                    formControlName="wtToday"
+                    type="number"
+                    placeholder="weight"
+                    [class.invalid]="!oneSetsForm.controls['wtToday'].valid && oneSetsForm.controls['wtToday'].touched"
+                    class="ion-no-padding app-font-16"
+                  >
+                  </ion-input>
+                </ion-col>
+
+                <ion-col size="1.5">
+                  <ion-input
+
+                    formControlName="repsToday"
+                    type="tel"
+                    value="repsToday"
+                    placeholder="reps"
+                    [class.invalid]="!oneSetsForm.controls['repsToday'].valid && oneSetsForm.controls['repsToday'].touched"
+                    class="ion-no-padding app-font-16"
+                  >
+                  </ion-input>
+                </ion-col>
+
+                <ion-col size="2" class=" ion-text-right">
+                  <ion-button
+                    size="small"
+
+                    color="primary"
+                    type="submit"
+                    [disabled]="!oneSetsForm.valid"
+                    (click)="myBackButtonOne()"
+                  >
+                    <strong>1</strong>
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </form>
+          </ion-grid>
+        </div>
+      </ion-card>
+
+      <ion-card color="paper" *ngIf="twoSetsClicked" mode="md">
+        <ion-row>
+          <ion-col size="7">
+            <ion-button
+              size="small"
+              shape="round"
+              color="midnightblue"
+              class="app-font-14 ion-text-capitalize"
+              (click)="onWarmupWTClick()"
+              (click)="onLasttimeClick()"
+              ><strong>Suggested warmup:</strong>
+            </ion-button>
+          </ion-col>
+          <ion-col
+            size="3"
+            class="ion-padding-top"
+            *ngFor="let item of altcurlTwo$ | async"
+
+          >
+            <strong>{{item.warmupWT}} x 15</strong>
+
+          </ion-col>
+        </ion-row>
+        <ion-card color="lavender" class="ion-no-padding ion-no-margin">
+          <ion-grid>
+            <ion-card
+              color="midnightblue"
+              class="ion-no-margin ion-no-padding"
+              *ngIf="workoutweightClicked"
+            >
+              <ion-row>
+                <ion-col
+                  class="app-font-14 ion-text-center"
+                  color="midnightblue"
+                  *ngFor="let item of altcurlOne$ | async"
+                >
+                  <strong>
+                    You are capable of
+                    <ion-text color="paper"
+                      >{{item.startWT}} x {{lowReps1}} first set</ion-text
+                    ><br />
+                  </strong>
+                </ion-col>
+              </ion-row>
+
+              <ion-row *ngFor="let item of altcurlTwo$ | async">
+                <ion-col
+                  size="5.25"
+                  class="app-font-14 ion-text-left ion-text-capitalize"
+                >
+                  <strong>Sets 1 - {{msg3}} Goal</strong>
+                </ion-col>
+                <ion-col size="3.25" class="app-font-15"
+
+                >
+                  <ion-text color="paper">
+                    <strong>{{item.WT}} x {{item.minReps}} </strong>
+                  </ion-text>
+                </ion-col>
+                <ion-col size="3.5"></ion-col>
+              </ion-row>
+              <ion-row
+                style="height: 3.5vh"
+                *ngFor="let item of altcurlTwo$ | async"
+              >
+                <ion-col size="5.25" class="app-font-14 ion-text-left">
+                  <strong>When Set {{msg3}} result is</strong>
+                </ion-col>
+                <ion-col
+                  size="3.25"
+                  class="ion-text-left app-font-15 ion-no-margin"
+                >
+                  <ion-text color="paper">
+                    <strong>{{item.WT}} x {{item.maxReps}} </strong>
+                  </ion-text>
+                </ion-col>
+                <ion-col size="3.5">{{item.deltaWT}} is added</ion-col>
+              </ion-row>
+            </ion-card>
+          </ion-grid> </ion-card
+        ><br />
+        <div *ngIf="tinyClicked ">
+          <ion-grid>
+            <ion-row
+              class="ion-no-margin app-font-14"
+              style="height: 3vh"
+              *ngFor="let item of altcurlTwo$ | async"
+            >
+              <ion-col size="1" class="ion-text-right"
+                ><strong></strong
+              ></ion-col>
+              <ion-col size="4" class="app-font-12"
+                ><strong>Latest </strong></ion-col
+              >
+              <ion-col size="3" class="ion-text-left app-font-12"
+                ><strong>weight</strong></ion-col
+              >
+              <ion-col size="4" class="ion-text-left app-font-12"
+                ><strong>Reps </strong></ion-col
+              >
+            </ion-row>
+          </ion-grid>
+        </div>
+        <ion-grid>
+          <form
+            [formGroup]="oneSetsForm"
+            (submit)="WorkoutOne(oneSetsForm)"
+            novalidate
+          >
+            <ion-row class="ion-text-right">
+              <!-- <ion-col size="1" class="ion-text-left"
+                ><strong>1</strong></ion-col -->
+
+              <ion-col size="5" *ngFor="let item of altcurlOne$ | async">
+                <ion-row class="ion-text-left app-font-12">
+                  <strong
+                    >{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}</strong
+                  >
+                </ion-row>
+                <ion-row class="ion-text-left">
+                  <strong> {{item.wtToday }} X {{item.repsToday}}</strong>
+                </ion-row>
+              </ion-col>
+              <ion-col size="3" class="ion-text-left">
+                <ion-input
+                  formControlName="wtToday"
+                  type="number"
+                  placeholder="weight"
+                  [class.invalid]="!oneSetsForm.controls['wtToday'].valid && oneSetsForm.controls['wtToday'].touched"
+                  class="ion-no-padding app-font-16"
+                >
+                </ion-input>
+              </ion-col>
+
+              <ion-col size="1.5">
+                <ion-input
+                  formControlName="repsToday"
+                  type="tel"
+                  value="repsToday"
+                  placeholder="reps"
+                  [class.invalid]="!oneSetsForm.controls['repsToday'].valid && oneSetsForm.controls['repsToday'].touched"
+                  class="ion-no-padding app-font-16"
+                >
+                </ion-input>
+              </ion-col>
+
+              <ion-col size="2" class=" ion-text-right">
+                <ion-button
+                  size="small"
+                  color="primary"
+                  type="submit"
+                  [disabled]="!oneSetsForm.valid"
+                >
+                  <strong>1</strong>
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </form>
+
+          <form
+            [formGroup]="twoSetsForm"
+            (submit)="WorkoutTwo(twoSetsForm)"
+            novalidate
+          >
+            <strong>
+              <ion-row >
+                <!-- <ion-col size="1" class="ion-text-left"
+                  ><strong>2 </strong></ion-col
+                > -->
+                <ion-col size="5" *ngFor="let item of altcurlTwo$ | async">
+                  <ion-row class=" app-font-12">
+                    <strong
+                      >{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}</strong
+                    >
+                  </ion-row>
+                  <ion-row >
+                    <strong> {{item.wtToday }} X {{item.repsToday}}</strong>
+                  </ion-row>
+                </ion-col>
+                <ion-col size="3" class="ion-text-left" >
+                  <ion-input
+                    formControlName="wtToday"
+                    type="number"
+                    placeholder="weight"
+                    [class.invalid]="!twoSetsForm.controls['wtToday'].valid && twoSetsForm.controls['wtToday'].touched"
+                    class="ion-no-padding"
+
+                  >
+                  </ion-input>
+                </ion-col>
+
+                <ion-col size="1.5">
+                  <ion-input
+                    formControlName="repsToday"
+                    type="tel"
+                    placeholder="reps"
+                    [class.invalid]="!twoSetsForm.controls['repsToday'].valid && twoSetsForm.controls['repsToday'].touched"
+                    class="ion-no-padding app-font-14"
+                  >
+                  </ion-input>
+                </ion-col>
+                <ion-col size="2" class=" ion-text-right">
+                  <ion-button
+                    size="small"
+                    color="primary"
+                    type="submit"
+                    [disabled]="!twoSetsForm.valid"
+                    (click)="myBackButtonTwo()"
+                  >
+
+                  <strong>2</strong>
+
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </strong>
+          </form>
+         </ion-grid>
+
+
+        </ion-card>
+
+        <ion-card color="paper" *ngIf="threeSetsClicked" mode="md">
+        <ion-row>
+          <ion-col size="7">
+            <ion-button
+              size="small"
+              shape="round"
+              color="midnightblue"
+              class="app-font-14 ion-text-capitalize"
+              (click)="onWarmupWTClick()"
+              (click)="onLasttimeClick()"
+              ><strong>Suggested warmup:</strong>
+            </ion-button>
+          </ion-col>
+          <ion-col
+            size="3"
+            class="ion-padding-top"
+            *ngFor="let item of altcurlThree | async"
+          >
+            <strong>{{item.warmupWT}} x 15</strong>
+          </ion-col>
+        </ion-row>
+        <ion-card color="lavender" class="ion-no-padding ion-no-margin">
+          <ion-grid>
+            <ion-card
+              color="midnightblue"
+              class="ion-no-margin ion-no-padding"
+              *ngIf="workoutweightClicked"
+            >
+              <ion-row>
+                <ion-col
+                  class="app-font-14 ion-text-center"
+                  color="midnightblue"
+                  *ngFor="let item of altcurlOne$ | async"
+                >
+                  <strong>
+                    You are capable of
+                    <ion-text color="paper"
+                      >{{item.startWT}} x {{lowReps1}} first set</ion-text
+                    ><br />
+                  </strong>
+                </ion-col>
+              </ion-row>
+
+              <ion-row *ngFor="let item of altcurlThree | async">
+                <ion-col
+                  size="5.25"
+                  class="app-font-14 ion-text-left ion-text-capitalize"
+                >
+                  <strong>Sets 1 - {{msg3}} Goal</strong>
+                </ion-col>
+                <ion-col size="3.25" class="app-font-15">
+                  <ion-text color="paper">
+                    <strong>{{item.WT}} x {{item.minReps}} </strong>
+                  </ion-text>
+                </ion-col>
+                <ion-col size="3.5"></ion-col>
+              </ion-row>
+              <ion-row
+                style="height: 3.5vh"
+                *ngFor="let item of altcurlThree | async"
+              >
+                <ion-col size="5.25" class="app-font-14 ion-text-left">
+                  <strong>When Set {{msg3}} result is</strong>
+                </ion-col>
+                <ion-col
+                  size="3.25"
+                  class="ion-text-left app-font-15 ion-no-margin"
+                >
+                  <ion-text color="paper">
+                    <strong>{{item.WT}} x {{item.maxReps}} </strong>
+                  </ion-text>
+                </ion-col>
+                <ion-col size="3.5">{{item.deltaWT}} is added</ion-col>
+              </ion-row>
+            </ion-card>
+          </ion-grid> </ion-card
+          ><br />
+
+          <div *ngIf="tinyClicked ">
+          <ion-row
+            class="ion-no-margin app-font-14"
+            style="height: 3vh"
+            *ngFor="let item of altcurlThree | async"
+          >
+            <ion-col size="1" class="ion-text-right"><strong></strong></ion-col>
+            <ion-col size="4" class="app-font-12"
+              ><strong>Latest </strong></ion-col
+            >
+            <ion-col size="3" class="ion-text-left app-font-12"
+              ><strong>weight</strong></ion-col
+            >
+            <ion-col size="4" class="ion-text-left app-font-12"
+              ><strong>Reps </strong></ion-col
+            >
+          </ion-row>
+
+          <form
+            [formGroup]="oneSetsForm"
+            (submit)="WorkoutOne(oneSetsForm)"
+            novalidate
+          >
+            <ion-row class="ion-text-right">
+              <!-- <ion-col size="1" class="ion-text-left"
+                ><strong>1</strong></ion-col -->
+
+              <ion-col size="4" *ngFor="let item of altcurlOne$ | async">
+                <ion-row class="ion-text-left app-font-12">
+                  <strong
+                    >{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}</strong
+                  >
+                </ion-row>
+                <ion-row class="ion-text-left">
+                  <strong> {{item.wtToday }} X {{item.repsToday}}</strong>
+                </ion-row>
+              </ion-col>
+              <ion-col size="3" class="ion-text-left">
+                <ion-input
+                  formControlName="wtToday"
+                  type="number"
+                  placeholder="weight"
+                  [class.invalid]="!oneSetsForm.controls['wtToday'].valid && oneSetsForm.controls['wtToday'].touched"
+                  class="ion-no-padding app-font-16"
+                >
+                </ion-input>
+              </ion-col>
+
+              <ion-col size="1.5">
+                <ion-input
+                  formControlName="repsToday"
+                  type="tel"
+                  value="repsToday"
+                  placeholder="reps"
+                  [class.invalid]="!oneSetsForm.controls['repsToday'].valid && oneSetsForm.controls['repsToday'].touched"
+                  class="ion-no-padding app-font-16"
+                >
+                </ion-input>
+              </ion-col>
+
+              <ion-col size="2" class=" ion-text-right">
+                <ion-button
+                  size="small"
+                  color="primary"
+                  type="submit"
+                  [disabled]="!oneSetsForm.valid"
+                >
+                  1
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </form>
+
+          <form
+            [formGroup]="twoSetsForm"
+            (submit)="WorkoutTwo(twoSetsForm)"
+            novalidate
+          >
+            <strong>
+              <ion-row class="ion-text-right">
+                <!-- <ion-col size="1" class="ion-text-left"
+                  ><strong>2 </strong></ion-col -->
+
+                <ion-col size="4" *ngFor="let item of altcurlTwo$ | async">
+                  <ion-row class="ion-text-left app-font-12">
+                    <strong
+                      >{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}</strong
+                    >
+                  </ion-row>
+                  <ion-row class="ion-text-left">
+                    <strong> {{item.wtToday }} X {{item.repsToday}}</strong>
+                  </ion-row>
+                </ion-col>
+                <ion-col size="3" class="ion-text-left">
+                  <ion-input
+                    formControlName="wtToday"
+                    type="number"
+                    placeholder="weight"
+                    [class.invalid]="!twoSetsForm.controls['wtToday'].valid && twoSetsForm.controls['wtToday'].touched"
+                    class="ion-no-padding"
+                  >
+                  </ion-input>
+                </ion-col>
+
+                <ion-col size="1.5">
+                  <ion-input
+                    formControlName="repsToday"
+                    type="tel"
+                    placeholder="reps"
+                    [class.invalid]="!twoSetsForm.controls['repsToday'].valid && twoSetsForm.controls['repsToday'].touched"
+                    class="ion-no-padding app-font-14"
+                  >
+                  </ion-input>
+                </ion-col>
+                <ion-col size="2" class=" ion-text-right">
+                  <ion-button
+                    size="small"
+                    color="primary"
+                    type="submit"
+                    [disabled]="!twoSetsForm.valid"
+                  >
+                   2
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </strong>
+          </form>
+
+          <form
+            [formGroup]="threeSetsForm"
+            (submit)="WorkoutThree(threeSetsForm)"
+            novalidate
+          >
+            <strong>
+              <ion-row class="ion-text-right">
+                <!-- <ion-col size="1" class="ion-text-left"
+                  ><strong>3</strong></ion-col -->
+
+                <ion-col size="4" *ngFor="let item of altcurlThree | async">
+                  <ion-row class="ion-text-left app-font-12">
+                    <strong
+                      >{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}</strong
+                    >
+                  </ion-row>
+                  <ion-row class="ion-text-left">
+                    <strong> {{item.wtToday }} X {{item.repsToday}}</strong>
+                  </ion-row>
+                </ion-col>
+                <ion-col size="3" class="ion-text-left">
+                  <ion-input
+                    formControlName="wtToday"
+                    type="number"
+                    placeholder="weight"
+                    [class.invalid]="!threeSetsForm.controls['wtToday'].valid && threeSetsForm.controls['wtToday'].touched"
+                    class="ion-no-padding"
+                  >
+                  </ion-input>
+                </ion-col>
+                <ion-col size="1.5">
+                  <ion-input
+                    formControlName="repsToday"
+                    type="tel"
+                    placeholder="reps"
+                    [class.invalid]="!threeSetsForm.controls['repsToday'].valid && threeSetsForm.controls['repsToday'].touched"
+                    class="ion-no-padding"
+                  >
+                  </ion-input>
+                </ion-col>
+                <ion-col size="2" class=" ion-text-right">
+                  <ion-button
+                    size="small"
+                    color="primary"
+                    type="submit"
+                    [disabled]="!threeSetsForm.valid"
+                    (click)="myBackButtonThree()"
+                  >
+                    3
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </strong>
+          </form>
+
+        </div>
+
+        </ion-card>
+
+        <ion-card color="paper" *ngIf="fourSetsClicked" mode="md">
+        <ion-row>
+          <ion-col size="7">
+            <ion-button
+              size="small"
+              shape="round"
+              color="midnightblue"
+              class="app-font-14 ion-text-capitalize"
+              (click)="onWarmupWTClick()"
+              (click)="onLasttimeClick()"
+              ><strong>Suggested warmup:</strong>
+            </ion-button>
+          </ion-col>
+          <ion-col
+            size="3"
+            class="ion-padding-top"
+            *ngFor="let item of altcurlFour | async"
+          >
+            <strong>{{item.warmupWT}} x 15</strong>
+          </ion-col>
+        </ion-row>
+        <ion-card color="lavender" class="ion-no-padding ion-no-margin">
+          <ion-grid>
+            <ion-card
+              color="midnightblue"
+              class="ion-no-margin ion-no-padding"
+              *ngIf="workoutweightClicked"
+            >
+              <ion-row>
+                <ion-col
+                  class="app-font-14 ion-text-center"
+                  color="midnightblue"
+                  *ngFor="let item of altcurlOne$ | async"
+                >
+                  <strong>
+                    You are capable of
+                    <ion-text color="paper"
+                      >{{item.startWT}} x {{lowReps1}} first set</ion-text
+                    ><br />
+                  </strong>
+                </ion-col>
+              </ion-row>
+
+              <ion-row *ngFor="let item of altcurlFour | async">
+                <ion-col
+                  size="5.25"
+                  class="app-font-14 ion-text-left ion-text-capitalize"
+                >
+                  <strong>Sets 1 - {{msg3}} Goal</strong>
+                </ion-col>
+                <ion-col size="3.25" class="app-font-15">
+                  <ion-text color="paper">
+                    <strong>{{item.WT}} x {{item.minReps}} </strong>
+                  </ion-text>
+                </ion-col>
+                <ion-col size="3.5"></ion-col>
+              </ion-row>
+              <ion-row
+                style="height: 3.5vh"
+                *ngFor="let item of altcurlFour | async"
+              >
+                <ion-col size="5.25" class="app-font-14 ion-text-left">
+                  <strong>When Set {{msg3}} result is</strong>
+                </ion-col>
+                <ion-col
+                  size="3.25"
+                  class="ion-text-left app-font-15 ion-no-margin"
+                >
+                  <ion-text color="paper">
+                    <strong>{{item.WT}} x {{item.maxReps}} </strong>
+                  </ion-text>
+                </ion-col>
+                <ion-col size="3.5">{{item.deltaWT}} is added</ion-col>
+              </ion-row>
+            </ion-card>
+          </ion-grid> </ion-card
+        ><br />
+
+        <div *ngIf="tinyClicked ">
+          <ion-row
+            class="ion-no-margin app-font-14"
+            style="height: 3vh"
+            *ngFor="let item of altcurlFour | async"
+          >
+            <ion-col size="1" class="ion-text-right"><strong></strong></ion-col>
+            <ion-col size="4" class="app-font-12"
+              ><strong>Latest </strong></ion-col
+            >
+            <ion-col size="3" class="ion-text-left app-font-12"
+              ><strong>weight</strong></ion-col
+            >
+            <ion-col size="4" class="ion-text-left app-font-12"
+              ><strong>Reps </strong></ion-col
+            >
+          </ion-row>
+
+          <form
+            [formGroup]="oneSetsForm"
+            (submit)="WorkoutOne(oneSetsForm)"
+            novalidate
+          >
+            <ion-row class="ion-text-right">
+              <!-- <ion-col size="1" class="ion-text-left"
+                ><strong>1</strong></ion-col -->
+
+              <ion-col size="4" *ngFor="let item of altcurlOne$ | async">
+                <ion-row class="ion-text-left app-font-12">
+                  <strong
+                    >{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}</strong
+                  >
+                </ion-row>
+                <ion-row class="ion-text-left">
+                  <strong> {{item.wtToday }} X {{item.repsToday}}</strong>
+                </ion-row>
+              </ion-col>
+              <ion-col size="3" class="ion-text-left">
+                <ion-input
+                  formControlName="wtToday"
+                  type="number"
+                  placeholder="weight"
+                  [class.invalid]="!oneSetsForm.controls['wtToday'].valid && oneSetsForm.controls['wtToday'].touched"
+                  class="ion-no-padding app-font-16"
+                >
+                </ion-input>
+              </ion-col>
+
+              <ion-col size="1.5">
+                <ion-input
+                  formControlName="repsToday"
+                  type="tel"
+                  value="repsToday"
+                  placeholder="reps"
+                  [class.invalid]="!oneSetsForm.controls['repsToday'].valid && oneSetsForm.controls['repsToday'].touched"
+                  class="ion-no-padding app-font-16"
+                >
+                </ion-input>
+              </ion-col>
+
+              <ion-col size="2" class="ion-text-right">
+                <ion-button
+                  size="small"
+                  color="primary"
+                  type="submit"
+                  [disabled]="!oneSetsForm.valid"
+                >
+                 1
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </form>
+
+          <form
+            [formGroup]="twoSetsForm"
+            (submit)="WorkoutTwo(twoSetsForm)"
+            novalidate
+          >
+            <strong>
+              <ion-row class="ion-text-right">
+                <!-- <ion-col size="1" class="ion-text-left"
+                  ><strong>2 </strong></ion-col -->
+
+                <ion-col size="4" *ngFor="let item of altcurlTwo$ | async">
+                  <ion-row class="ion-text-left app-font-12">
+                    <strong
+                      >{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}</strong
+                    >
+                  </ion-row>
+                  <ion-row class="ion-text-left">
+                    <strong> {{item.wtToday }} X {{item.repsToday}}</strong>
+                  </ion-row>
+                </ion-col>
+                <ion-col size="3" class="ion-text-left">
+                  <ion-input
+                    formControlName="wtToday"
+                    type="number"
+                    placeholder="weight"
+                    [class.invalid]="!twoSetsForm.controls['wtToday'].valid && twoSetsForm.controls['wtToday'].touched"
+                    class="ion-no-padding"
+                  >
+                  </ion-input>
+                </ion-col>
+
+                <ion-col size="1.5">
+                  <ion-input
+                    formControlName="repsToday"
+                    type="tel"
+                    placeholder="reps"
+                    [class.invalid]="!twoSetsForm.controls['repsToday'].valid && twoSetsForm.controls['repsToday'].touched"
+                    class="ion-no-padding app-font-14"
+                  >
+                  </ion-input>
+                </ion-col>
+                <ion-col size="2" class=" ion-text-right">
+                  <ion-button
+                    size="small"
+                    color="primary"
+                    type="submit"
+                    [disabled]="!twoSetsForm.valid"
+                  >
+                     2
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </strong>
+          </form>
+
+          <form
+            [formGroup]="threeSetsForm"
+            (submit)="WorkoutThree(threeSetsForm)"
+            novalidate
+          >
+            <strong>
+              <ion-row class="ion-text-right">
+                <!-- <ion-col size="1" class="ion-text-left"
+                  ><strong>3</strong></ion-col -->
+
+                <ion-col size="4" *ngFor="let item of altcurlThree | async">
+                  <ion-row class="ion-text-left app-font-12">
+                    <strong
+                      >{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}</strong
+                    >
+                  </ion-row>
+                  <ion-row class="ion-text-left">
+                    <strong> {{item.wtToday }} X {{item.repsToday}}</strong>
+                  </ion-row>
+                </ion-col>
+                <ion-col size="3" class="ion-text-left">
+                  <ion-input
+                    formControlName="wtToday"
+                    type="number"
+                    placeholder="weight"
+                    [class.invalid]="!threeSetsForm.controls['wtToday'].valid && threeSetsForm.controls['wtToday'].touched"
+                    class="ion-no-padding"
+                  >
+                  </ion-input>
+                </ion-col>
+                <ion-col size="1.5">
+                  <ion-input
+                    formControlName="repsToday"
+                    type="tel"
+                    placeholder="reps"
+                    [class.invalid]="!threeSetsForm.controls['repsToday'].valid && threeSetsForm.controls['repsToday'].touched"
+                    class="ion-no-padding"
+                  >
+                  </ion-input>
+                </ion-col>
+                <ion-col size="2" class=" ion-text-right">
+                  <ion-button
+                    size="small"
+                    color="primary"
+                    type="submit"
+                    [disabled]="!threeSetsForm.valid"
+                  >
+
+                      3
+
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </strong>
+          </form>
+
+          <form
+            [formGroup]="fourSetsForm"
+            (submit)="WorkoutFour(fourSetsForm)"
+            novalidate
+          >
+            <strong>
+              <ion-row class="ion-text-right">
+                <!-- <ion-col size="1" class="ion-text-left"
+                  ><strong>4</strong></ion-col -->
+
+                <ion-col size="4" *ngFor="let item of altcurlFour | async">
+                  <ion-row class="ion-text-left app-font-12">
+                    <strong
+                      >{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}</strong
+                    >
+                  </ion-row>
+                  <ion-row class="ion-text-left">
+                    <strong> {{item.wtToday }} X {{item.repsToday}}</strong>
+                  </ion-row>
+                </ion-col>
+                <ion-col size="3" class="ion-text-left">
+                  <ion-input
+                    formControlName="wtToday"
+                    type="number"
+                    placeholder="weight"
+                    [class.invalid]="!fourSetsForm.controls['wtToday'].valid && fourSetsForm.controls['wtToday'].touched"
+                    class="ion-no-padding"
+                  >
+                  </ion-input>
+                </ion-col>
+                <ion-col size="1.5">
+                  <ion-input
+                    formControlName="repsToday"
+                    type="tel"
+                    placeholder="reps"
+                    [class.invalid]="!fourSetsForm.controls['repsToday'].valid && fourSetsForm.controls['repsToday'].touched"
+                    class="ion-no-padding"
+                  >
+                  </ion-input>
+                </ion-col>
+                <ion-col size="2" class=" ion-text-right">
+                  <ion-button
+                    size="small"
+                    color="primary"
+                    type="submit"
+                    [disabled]="!fourSetsForm.valid"
+                    (click)="myBackButtonFour()"
+                  >
+
+                     4
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </strong>
+          </form>
+        </div>
+      </ion-card>
+
+      <ion-card color="paper" *ngIf="fiveSetsClicked" mode="md">
+        <ion-row>
+          <ion-col size="7">
+            <ion-button
+              size="small"
+              shape="round"
+              color="midnightblue"
+              class="app-font-14 ion-text-capitalize"
+              (click)="onWarmupWTClick()"
+              (click)="onLasttimeClick()"
+              ><strong>Suggested warmup:</strong>
+            </ion-button>
+          </ion-col>
+          <ion-col
+            size="3"
+            class="ion-padding-top"
+            *ngFor="let item of altcurlFive | async"
+          >
+            <strong>{{item.warmupWT}} x 15</strong>
+          </ion-col>
+        </ion-row>
+        <ion-card color="lavender" class="ion-no-padding ion-no-margin">
+          <ion-grid>
+            <ion-card
+              color="midnightblue"
+              class="ion-no-margin ion-no-padding"
+              *ngIf="workoutweightClicked"
+            >
+              <ion-row>
+                <ion-col
+                  class="app-font-14 ion-text-center"
+                  color="midnightblue"
+                  *ngFor="let item of altcurlOne$ | async"
+                >
+                  <strong>
+                    You are capable of
+                    <ion-text color="paper"
+                      >{{item.startWT}} x {{lowReps1}} first set</ion-text
+                    ><br />
+                  </strong>
+                </ion-col>
+              </ion-row>
+
+              <ion-row *ngFor="let item of altcurlFive | async">
+                <ion-col
+                  size="5.25"
+                  class="app-font-14 ion-text-left ion-text-capitalize"
+                >
+                  <strong>Sets 1 - {{msg3}} Goal</strong>
+                </ion-col>
+                <ion-col size="3.25" class="app-font-15">
+                  <ion-text color="paper">
+                    <strong>{{item.WT}} x {{item.minReps}} </strong>
+                  </ion-text>
+                </ion-col>
+                <ion-col size="3.5"></ion-col>
+              </ion-row>
+              <ion-row
+                style="height: 3.5vh"
+                *ngFor="let item of altcurlFive | async"
+              >
+                <ion-col size="5.25" class="app-font-14 ion-text-left">
+                  <strong>When Set {{msg3}} result is</strong>
+                </ion-col>
+                <ion-col
+                  size="3.25"
+                  class="ion-text-left app-font-15 ion-no-margin"
+                >
+                  <ion-text color="paper">
+                    <strong>{{item.WT}} x {{item.maxReps}} </strong>
+                  </ion-text>
+                </ion-col>
+                <ion-col size="3.5">{{item.deltaWT}} is added</ion-col>
+              </ion-row>
+            </ion-card>
+          </ion-grid> </ion-card
+        ><br />
+
+        <div *ngIf="tinyClicked ">
+          <ion-row
+            class="ion-no-margin app-font-14"
+            style="height: 3vh"
+            *ngFor="let item of altcurlFive | async"
+          >
+            <ion-col size="1" class="ion-text-right"><strong></strong></ion-col>
+            <ion-col size="4" class="app-font-12"
+              ><strong>Latest </strong></ion-col
+            >
+            <ion-col size="3" class="ion-text-left app-font-12"
+              ><strong>weight</strong></ion-col
+            >
+            <ion-col size="4" class="ion-text-left app-font-12"
+              ><strong>Reps </strong></ion-col
+            >
+          </ion-row>
+
+          <form
+            [formGroup]="oneSetsForm"
+            (submit)="WorkoutOne(oneSetsForm)"
+            novalidate
+          >
+            <ion-row class="ion-text-right">
+              <!-- <ion-col size="1" class="ion-text-left"
+                ><strong>1</strong></ion-col -->
+
+              <ion-col size="4" *ngFor="let item of altcurlOne$ | async">
+                <ion-row class="ion-text-left app-font-12">
+                  <strong
+                    >{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}</strong
+                  >
+                </ion-row>
+                <ion-row class="ion-text-left">
+                  <strong> {{item.wtToday }} X {{item.repsToday}}</strong>
+                </ion-row>
+              </ion-col>
+              <ion-col size="3" class="ion-text-left">
+                <ion-input
+                  formControlName="wtToday"
+                  type="number"
+                  placeholder="weight"
+                  [class.invalid]="!oneSetsForm.controls['wtToday'].valid && oneSetsForm.controls['wtToday'].touched"
+                  class="ion-no-padding app-font-16"
+                >
+                </ion-input>
+              </ion-col>
+
+              <ion-col size="1.5">
+                <ion-input
+                  formControlName="repsToday"
+                  type="tel"
+                  value="repsToday"
+                  placeholder="reps"
+                  [class.invalid]="!oneSetsForm.controls['repsToday'].valid && oneSetsForm.controls['repsToday'].touched"
+                  class="ion-no-padding app-font-16"
+                >
+                </ion-input>
+              </ion-col>
+
+              <ion-col size="2" class=" ion-text-right">
+                <ion-button
+                  size="small"
+                  color="primary"
+                  type="submit"
+                  [disabled]="!oneSetsForm.valid"
+                >
+                  1
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </form>
+
+          <form
+            [formGroup]="twoSetsForm"
+            (submit)="WorkoutTwo(twoSetsForm)"
+            novalidate
+          >
+            <strong>
+              <ion-row class="ion-text-right">
+                <!-- <ion-col size="1" class="ion-text-left"
+                  ><strong>2 </strong></ion-col -->
+
+                <ion-col size="4" *ngFor="let item of altcurlTwo$ | async">
+                  <ion-row class="ion-text-left app-font-12">
+                    <strong
+                      >{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}</strong
+                    >
+                  </ion-row>
+                  <ion-row class="ion-text-left">
+                    <strong> {{item.wtToday }} X {{item.repsToday}}</strong>
+                  </ion-row>
+                </ion-col>
+                <ion-col size="3" class="ion-text-left">
+                  <ion-input
+                    formControlName="wtToday"
+                    type="number"
+                    placeholder="weight"
+                    [class.invalid]="!twoSetsForm.controls['wtToday'].valid && twoSetsForm.controls['wtToday'].touched"
+                    class="ion-no-padding"
+                  >
+                  </ion-input>
+                </ion-col>
+
+                <ion-col size="1.5">
+                  <ion-input
+                    formControlName="repsToday"
+                    type="tel"
+                    placeholder="reps"
+                    [class.invalid]="!twoSetsForm.controls['repsToday'].valid && twoSetsForm.controls['repsToday'].touched"
+                    class="ion-no-padding app-font-14"
+                  >
+                  </ion-input>
+                </ion-col>
+                <ion-col size="2" class=" ion-text-right">
+                  <ion-button
+                    size="small"
+                    color="primary"
+                    type="submit"
+                    [disabled]="!twoSetsForm.valid"
+                  >
+
+                      2
+
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </strong>
+          </form>
+
+          <form
+            [formGroup]="threeSetsForm"
+            (submit)="WorkoutThree(threeSetsForm)"
+            novalidate
+          >
+            <strong>
+              <ion-row class="ion-text-right">
+                <!-- <ion-col size="1" class="ion-text-left"
+                  ><strong>3</strong></ion-col -->
+
+                <ion-col size="4" *ngFor="let item of altcurlThree | async">
+                  <ion-row class="ion-text-left app-font-12">
+                    <strong
+                      >{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}</strong
+                    >
+                  </ion-row>
+                  <ion-row class="ion-text-left">
+                    <strong> {{item.wtToday }} X {{item.repsToday}}</strong>
+                  </ion-row>
+                </ion-col>
+                <ion-col size="3" class="ion-text-left">
+                  <ion-input
+                    formControlName="wtToday"
+                    type="number"
+                    placeholder="weight"
+                    [class.invalid]="!threeSetsForm.controls['wtToday'].valid && threeSetsForm.controls['wtToday'].touched"
+                    class="ion-no-padding"
+                  >
+                  </ion-input>
+                </ion-col>
+                <ion-col size="1.5">
+                  <ion-input
+                    formControlName="repsToday"
+                    type="tel"
+                    placeholder="reps"
+                    [class.invalid]="!threeSetsForm.controls['repsToday'].valid && threeSetsForm.controls['repsToday'].touched"
+                    class="ion-no-padding"
+                  >
+                  </ion-input>
+                </ion-col>
+                <ion-col size="2" class=" ion-text-right">
+                  <ion-button
+                    size="small"
+                    color="primary"
+                    type="submit"
+                    [disabled]="!threeSetsForm.valid"
+                  >
+
+                     3
+
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </strong>
+          </form>
+
+          <form
+            [formGroup]="fourSetsForm"
+            (submit)="WorkoutFour(fourSetsForm)"
+            novalidate
+          >
+            <strong>
+              <ion-row class="ion-text-right">
+                <!-- <ion-col size="1" class="ion-text-left"
+                  ><strong>4</strong></ion-col -->
+
+                <ion-col size="4" *ngFor="let item of altcurlFour | async">
+                  <ion-row class="ion-text-left app-font-12">
+                    <strong
+                      >{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}</strong
+                    >
+                  </ion-row>
+                  <ion-row class="ion-text-left">
+                    <strong> {{item.wtToday }} X {{item.repsToday}}</strong>
+                  </ion-row>
+                </ion-col>
+                <ion-col size="3" class="ion-text-left">
+                  <ion-input
+                    formControlName="wtToday"
+                    type="number"
+                    placeholder="weight"
+                    [class.invalid]="!fourSetsForm.controls['wtToday'].valid && fourSetsForm.controls['wtToday'].touched"
+                    class="ion-no-padding"
+                  >
+                  </ion-input>
+                </ion-col>
+                <ion-col size="1.5">
+                  <ion-input
+                    formControlName="repsToday"
+                    type="tel"
+                    placeholder="reps"
+                    [class.invalid]="!fourSetsForm.controls['repsToday'].valid && fourSetsForm.controls['repsToday'].touched"
+                    class="ion-no-padding"
+                  >
+                  </ion-input>
+                </ion-col>
+                <ion-col size="2" class=" ion-text-right">
+                  <ion-button
+                    size="small"
+                    color="primary"
+                    type="submit"
+                    [disabled]="!fourSetsForm.valid"
+                  >
+
+                     4
+
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </strong>
+          </form>
+
+          <form
+            [formGroup]="fiveSetsForm"
+            (submit)="WorkoutFive(fiveSetsForm)"
+            novalidate
+          >
+            <strong>
+              <ion-row class="ion-text-right">
+                <!-- <ion-col size="1" class="ion-text-left"
+                  ><strong>5 </strong></ion-col -->
+
+                <ion-col size="4" *ngFor="let item of altcurlFive | async">
+                  <ion-row class="ion-text-left app-font-12">
+                    <strong
+                      >{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}</strong
+                    >
+                  </ion-row>
+                  <ion-row class="ion-text-left">
+                    <strong> {{item.wtToday }} X {{item.repsToday}}</strong>
+                  </ion-row>
+                </ion-col>
+                <ion-col size="3" class="ion-text-left">
+                  <ion-input
+                    formControlName="wtToday"
+                    type="number"
+                    placeholder="weight"
+                    [class.invalid]="!fiveSetsForm.controls['wtToday'].valid && fiveSetsForm.controls['wtToday'].touched"
+                    class="ion-no-padding"
+                  >
+                  </ion-input>
+                </ion-col>
+
+                <ion-col size="1.5">
+                  <ion-input
+                    formControlName="repsToday"
+                    type="tel"
+                    placeholder="reps"
+                    [class.invalid]="!fiveSetsForm.controls['repsToday'].valid && fiveSetsForm.controls['repsToday'].touched"
+                    class="ion-no-padding"
+                  >
+                  </ion-input>
+                </ion-col>
+                <ion-col size="2" class=" ion-text-right">
+                  <ion-button
+                    size="small"
+                    color="primary"
+                    type="submit"
+                    [disabled]="!fiveSetsForm.valid"
+                    (click)="myBackButtonFive()"
+                  >
+
+                    5
+
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </strong>
+          </form>
+        </div>
+      </ion-card>
+
+      <ion-card color="paper" *ngIf="sixSetsClicked" mode="md">
+          <ion-row>
+          <ion-col size="7">
+            <ion-button
+              size="small"
+              shape="round"
+              color="midnightblue"
+              class="app-font-14 ion-text-capitalize"
+              (click)="onWarmupWTClick()"
+              (click)="onLasttimeClick()"
+              ><strong>Suggested warmup:</strong>
+            </ion-button>
+          </ion-col>
+          <ion-col
+            size="3"
+            class="ion-padding-top"
+            *ngFor="let item of altcurlSix | async"
+          >
+            <strong>{{item.warmupWT}} x 15</strong>
+          </ion-col>
+          </ion-row>
+          <ion-card color="lavender" class="ion-no-padding ion-no-margin">
+          <ion-grid>
+            <ion-card
+              color="midnightblue"
+              class="ion-no-margin ion-no-padding"
+              *ngIf="workoutweightClicked"
+            >
+              <ion-row>
+                <ion-col
+                  class="app-font-14 ion-text-center"
+                  color="midnightblue"
+                  *ngFor="let item of altcurlOne$ | async"
+                >
+                  <strong>
+                    You are capable of
+                    <ion-text color="paper"
+                      >{{item.startWT}} x {{lowReps1}} first set</ion-text
+                    ><br />
+                  </strong>
+                </ion-col>
+              </ion-row>
+
+              <ion-row *ngFor="let item of altcurlSix | async">
+                <ion-col
+                  size="5.25"
+                  class="app-font-14 ion-text-left ion-text-capitalize"
+                >
+                  <strong>Sets 1 - {{msg3}} Goal</strong>
+                </ion-col>
+                <ion-col size="3.25" class="app-font-15">
+                  <ion-text color="paper">
+                    <strong>{{item.WT}} x {{item.minReps}} </strong>
+                  </ion-text>
+                </ion-col>
+                <ion-col size="3.5"></ion-col>
+              </ion-row>
+              <ion-row
+                style="height: 3.5vh"
+                *ngFor="let item of altcurlSix | async"
+              >
+                <ion-col size="5.25" class="app-font-14 ion-text-left">
+                  <strong>When Set {{msg3}} result is</strong>
+                </ion-col>
+                <ion-col
+                  size="3.25"
+                  class="ion-text-left app-font-15 ion-no-margin"
+                >
+                  <ion-text color="paper">
+                    <strong>{{item.WT}} x {{item.maxReps}} </strong>
+                  </ion-text>
+                </ion-col>
+                <ion-col size="3.5">{{item.deltaWT}} is added</ion-col>
+              </ion-row>
+            </ion-card>
+          </ion-grid> </ion-card
+          ><br />
+
+          <div *ngIf="tinyClicked ">
+          <ion-row
+            class="ion-no-margin app-font-14"
+            style="height: 3vh"
+            *ngFor="let item of altcurlSix | async"
+          >
+            <ion-col size="1" class="ion-text-right"><strong></strong></ion-col>
+            <ion-col size="4" class="app-font-12"
+              ><strong>Latest </strong></ion-col
+            >
+            <ion-col size="3" class="ion-text-left app-font-12"
+              ><strong>weight</strong></ion-col
+            >
+            <ion-col size="4" class="ion-text-left app-font-12"
+              ><strong>Reps </strong></ion-col
+            >
+          </ion-row>
+
+          <form
+            [formGroup]="oneSetsForm"
+            (submit)="WorkoutOne(oneSetsForm)"
+            novalidate
+          >
+            <ion-row class="ion-text-right">
+              <!-- <ion-col size="1" class="ion-text-left"
+                ><strong>1</strong></ion-col -->
+
+              <ion-col size="4" *ngFor="let item of altcurlOne$ | async">
+                <ion-row class="ion-text-left app-font-12">
+                  <strong
+                    >{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}</strong
+                  >
+                </ion-row>
+                <ion-row class="ion-text-left">
+                  <strong> {{item.wtToday }} X {{item.repsToday}}</strong>
+                </ion-row>
+              </ion-col>
+              <ion-col size="3" class="ion-text-left">
+                <ion-input
+                  formControlName="wtToday"
+                  type="number"
+                  placeholder="weight"
+                  [class.invalid]="!oneSetsForm.controls['wtToday'].valid && oneSetsForm.controls['wtToday'].touched"
+                  class="ion-no-padding app-font-16"
+                >
+                </ion-input>
+              </ion-col>
+
+              <ion-col size="1.5">
+                <ion-input
+                  formControlName="repsToday"
+                  type="tel"
+                  value="repsToday"
+                  placeholder="reps"
+                  [class.invalid]="!oneSetsForm.controls['repsToday'].valid && oneSetsForm.controls['repsToday'].touched"
+                  class="ion-no-padding app-font-16"
+                >
+                </ion-input>
+              </ion-col>
+
+              <ion-col size="2" class=" ion-text-right">
+                <ion-button
+                  size="small"
+                  color="primary"
+                  type="submit"
+                  [disabled]="!oneSetsForm.valid"
+                >
+               1
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </form>
+
+          <form
+            [formGroup]="twoSetsForm"
+            (submit)="WorkoutTwo(twoSetsForm)"
+            novalidate
+          >
+            <strong>
+              <ion-row class="ion-text-right">
+                <!-- <ion-col size="1" class="ion-text-left"
+                  ><strong>2 </strong></ion-col -->
+
+                <ion-col size="4" *ngFor="let item of altcurlTwo$ | async">
+                  <ion-row class="ion-text-left app-font-12">
+                    <strong
+                      >{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}</strong
+                    >
+                  </ion-row>
+                  <ion-row class="ion-text-left">
+                    <strong> {{item.wtToday }} X {{item.repsToday}}</strong>
+                  </ion-row>
+                </ion-col>
+                <ion-col size="3" class="ion-text-left">
+                  <ion-input
+                    formControlName="wtToday"
+                    type="number"
+                    placeholder="weight"
+                    [class.invalid]="!twoSetsForm.controls['wtToday'].valid && twoSetsForm.controls['wtToday'].touched"
+                    class="ion-no-padding"
+                  >
+                  </ion-input>
+                </ion-col>
+
+                <ion-col size="1.5">
+                  <ion-input
+                    formControlName="repsToday"
+                    type="tel"
+                    placeholder="reps"
+                    [class.invalid]="!twoSetsForm.controls['repsToday'].valid && twoSetsForm.controls['repsToday'].touched"
+                    class="ion-no-padding app-font-14"
+                  >
+                  </ion-input>
+                </ion-col>
+                <ion-col size="2" class=" ion-text-right">
+                  <ion-button
+                    size="small"
+                    color="primary"
+                    type="submit"
+                    [disabled]="!twoSetsForm.valid"
+                  >
+
+                    2
+
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </strong>
+          </form>
+
+          <form
+            [formGroup]="threeSetsForm"
+            (submit)="WorkoutThree(threeSetsForm)"
+            novalidate
+          >
+            <strong>
+              <ion-row class="ion-text-right">
+                <!-- <ion-col size="1" class="ion-text-left"
+                  ><strong>3</strong></ion-col -->
+
+                <ion-col size="4" *ngFor="let item of altcurlThree | async">
+                  <ion-row class="ion-text-left app-font-12">
+                    <strong
+                      >{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}</strong
+                    >
+                  </ion-row>
+                  <ion-row class="ion-text-left">
+                    <strong> {{item.wtToday }} X {{item.repsToday}}</strong>
+                  </ion-row>
+                </ion-col>
+                <ion-col size="3" class="ion-text-left">
+                  <ion-input
+                    formControlName="wtToday"
+                    type="number"
+                    placeholder="weight"
+                    [class.invalid]="!threeSetsForm.controls['wtToday'].valid && threeSetsForm.controls['wtToday'].touched"
+                    class="ion-no-padding"
+                  >
+                  </ion-input>
+                </ion-col>
+                <ion-col size="1.5">
+                  <ion-input
+                    formControlName="repsToday"
+                    type="tel"
+                    placeholder="reps"
+                    [class.invalid]="!threeSetsForm.controls['repsToday'].valid && threeSetsForm.controls['repsToday'].touched"
+                    class="ion-no-padding"
+                  >
+                  </ion-input>
+                </ion-col>
+                <ion-col size="2" class=" ion-text-right">
+                  <ion-button
+                    size="small"
+                    color="primary"
+                    type="submit"
+                    [disabled]="!threeSetsForm.valid"
+                  >
+
+                 3
+
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </strong>
+          </form>
+
+          <form
+            [formGroup]="fourSetsForm"
+            (submit)="WorkoutFour(fourSetsForm)"
+            novalidate
+          >
+            <strong>
+              <ion-row class="ion-text-right">
+                <!-- <ion-col size="1" class="ion-text-left"
+                  ><strong>4</strong></ion-col -->
+
+                <ion-col size="4" *ngFor="let item of altcurlFour | async">
+                  <ion-row class="ion-text-left app-font-12">
+                    <strong
+                      >{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}</strong
+                    >
+                  </ion-row>
+                  <ion-row class="ion-text-left">
+                    <strong> {{item.wtToday }} X {{item.repsToday}}</strong>
+                  </ion-row>
+                </ion-col>
+                <ion-col size="3" class="ion-text-left">
+                  <ion-input
+                    formControlName="wtToday"
+                    type="number"
+                    placeholder="weight"
+                    [class.invalid]="!fourSetsForm.controls['wtToday'].valid && fourSetsForm.controls['wtToday'].touched"
+                    class="ion-no-padding"
+                  >
+                  </ion-input>
+                </ion-col>
+                <ion-col size="1.5">
+                  <ion-input
+                    formControlName="repsToday"
+                    type="tel"
+                    placeholder="reps"
+                    [class.invalid]="!fourSetsForm.controls['repsToday'].valid && fourSetsForm.controls['repsToday'].touched"
+                    class="ion-no-padding"
+                  >
+                  </ion-input>
+                </ion-col>
+                <ion-col size="2" class=" ion-text-right">
+                  <ion-button
+                    size="small"
+                    color="primary"
+                    type="submit"
+                    [disabled]="!fourSetsForm.valid"
+                  >
+
+                     4
+
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </strong>
+          </form>
+
+          <form
+            [formGroup]="fiveSetsForm"
+            (submit)="WorkoutFive(fiveSetsForm)"
+            novalidate
+          >
+            <strong>
+              <ion-row class="ion-text-right">
+                <!-- <ion-col size="1" class="ion-text-left"
+                  ><strong>5 </strong></ion-col -->
+
+                <ion-col size="4" *ngFor="let item of altcurlFive | async">
+                  <ion-row class="ion-text-left app-font-12">
+                    <strong
+                      >{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}</strong
+                    >
+                  </ion-row>
+                  <ion-row class="ion-text-left">
+                    <strong> {{item.wtToday }} X {{item.repsToday}}</strong>
+                  </ion-row>
+                </ion-col>
+                <ion-col size="3" class="ion-text-left">
+                  <ion-input
+                    formControlName="wtToday"
+                    type="number"
+                    placeholder="weight"
+                    [class.invalid]="!fiveSetsForm.controls['wtToday'].valid && fiveSetsForm.controls['wtToday'].touched"
+                    class="ion-no-padding"
+                  >
+                  </ion-input>
+                </ion-col>
+
+                <ion-col size="1.5">
+                  <ion-input
+                    formControlName="repsToday"
+                    type="tel"
+                    placeholder="reps"
+                    [class.invalid]="!fiveSetsForm.controls['repsToday'].valid && fiveSetsForm.controls['repsToday'].touched"
+                    class="ion-no-padding"
+                  >
+                  </ion-input>
+                </ion-col>
+                <ion-col size="2" class=" ion-text-right">
+                  <ion-button
+                    size="small"
+                    color="primary"
+                    type="submit"
+                    [disabled]="!fiveSetsForm.valid"
+                  >
+
+                    5
+
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </strong>
+          </form>
+
+          <form
+            [formGroup]="sixSetsForm"
+            (submit)="WorkoutSix(sixSetsForm)"
+            novalidate
+          >
+            <strong>
+              <ion-row class="ion-text-right">
+                <!-- <ion-col size="1" class="ion-text-left"
+                  ><strong>6 </strong></ion-col -->
+
+                <ion-col size="4" *ngFor="let item of altcurlSix | async">
+                  <ion-row class="ion-text-left app-font-12">
+                    <strong
+                      >{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}</strong
+                    >
+                  </ion-row>
+                  <ion-row class="ion-text-left">
+                    <strong> {{item.wtToday }} X {{item.repsToday}}</strong>
+                  </ion-row>
+                </ion-col>
+                <ion-col size="3" class="ion-text-left">
+                  <ion-input
+                    formControlName="wtToday"
+                    type="number"
+                    placeholder="weight"
+                    [class.invalid]="!sixSetsForm.controls['wtToday'].valid && sixSetsForm.controls['wtToday'].touched"
+                    class="ion-no-padding"
+                  >
+                  </ion-input>
+                </ion-col>
+
+                <ion-col size="1.5">
+                  <ion-input
+                    formControlName="repsToday"
+                    type="tel"
+                    placeholder="reps"
+                    [class.invalid]="!sixSetsForm.controls['repsToday'].valid && sixSetsForm.controls['repsToday'].touched"
+                    class="ion-no-padding"
+                  >
+                  </ion-input>
+                </ion-col>
+                <ion-col size="2" class=" ion-text-right">
+                  <ion-button
+                    size="small"
+                    color="primary"
+                    type="submit"
+                    [disabled]="!sixSetsForm.valid"
+                    (click)="myBackButtonSix()"
+                  >
+
+                      6
+
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </strong>
+          </form>
+
+        </div>
+      </ion-card>
+
+    </ion-col>
+
+  </ion-grid>
+  </ion-content>
+
+<ion-footer>
+  <ion-toolbar color="verydarkblue" *ngIf="swapClicked">
+    <ion-row style="height: 5vh" nowrap>
+      <ion-col class="app-font-14 ion-text-right ion-padding-top">
+        enter pounds
+      </ion-col>
+      <ion-col size="2" class="ion-text-right">
+        <ion-input
+          class="app-font-14 ion-test-bottom"
+          type="number"
+          [(ngModel)]="pounds"
+          placeholder="here"
+        >
+        </ion-input>
+      </ion-col>
+      <ion-col size="3">
+        <ion-button
+          size="small"
+          class="app-font-12 ion-text-capitalize"
+          color="tertiary"
+          style="border-radius: 10px"
+          (click)="lbTokg()"
+        >
+          <strong>Convert </strong>
+        </ion-button>
+      </ion-col>
+      <ion-col class="app-font-14 ion-padding-top">{{kg}} Kg</ion-col>
+    </ion-row>
+    <ion-row style="height: 5vh" nowrap>
+      <ion-col class="app-font-14 ion-text-right ion-padding-top">
+        enter kgs
+      </ion-col>
+      <ion-col size="2" class="ion-text-right">
+        <ion-input
+          class="app-font-14 ion-test-bottom"
+          type="number"
+          [(ngModel)]="kgs"
+          placeholder="here"
+        >
+        </ion-input>
+      </ion-col>
+      <ion-col size="3">
+        <ion-button
+          size="small"
+          class="app-font-12 ion-text-capitalize"
+          color="tertiary"
+          style="border-radius: 10px"
+          (click)="kgTolb()"
+        >
+          <strong>Convert </strong>
+        </ion-button>
+      </ion-col>
+      <ion-col class="app-font-14 ion-padding-top">{{lb}} pounds</ion-col>
+    </ion-row>
+  </ion-toolbar>
+
+  <ion-toolbar color="midnightblue">
+    <ion-grid>
+      <ion-row>
+        <ion-col
+          size="3"
+          *ngIf="oneSetsClicked || twoSetsClicked|| threeSetsClicked || fourSetsClicked || fiveSetsClicked || sixSetsClicked"
+        >
+          <ion-button
+            class="app-font-14 ion-text-lowercase"
+            size="small"
+            color="paper"
+            (click)="onRecomWTClick()"
+            (click)="ScrollToTop()"
+          >
+            Start<br />
+            Weight
+          </ion-button>
+        </ion-col>
+        <ion-col
+          size="3"
+          *ngIf="oneSetsClicked || twoSetsClicked|| threeSetsClicked || fourSetsClicked || fiveSetsClicked || sixSetsClicked"
+        >
+          <ion-button
+            class="app-font-14 ion-text-lowercase"
+            size="small"
+            color="paper"
+            (click)="swap()"
+            (click)="ScrollToTop()"
+            >lb-kg<ion-icon
+              name="swap-horizontal-outline"
+              size="small"
+            ></ion-icon
+          ></ion-button>
+        </ion-col>
+        <ion-col size="3">
+          <ion-button
+            class="app-font-14 ion-text-lowercase"
+            size="small"
+            color="primary"
+            value="latest"
+            (click)="onLatestClick()"
+            (click)="ScrollToTop()"
+          >
+            Latest
+          </ion-button>
+        </ion-col>
+
+        <ion-col size="3">
+          <ion-button
+            class="app-font-14 ion-text-lowercase"
+            size="small"
+            color="secondary"
+            (click)="onnotesClick()"
+            (click)="ScrollToTop()"
+          >
+            Notes
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>
+

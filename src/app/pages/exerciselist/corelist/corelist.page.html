@@ -1,0 +1,85 @@
+<ion-header><br/><br/>
+<ion-toolbar class=" ion-padding-top ion-text-center" color="midnightblue">
+    <br/><br/>
+        <ion-buttons slot="start">
+            <ion-back-button text="" size="small"></ion-back-button>
+        </ion-buttons>
+        <strong>Available Core Exercises</strong>
+    </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content class="ion-no-padding" color="midnightblue">
+<ion-grid>
+<ion-row>
+<ion-col size="12" size-lg="8" Size-md="8" Size-sm="8" offset-lg="2" offset-md="2" offset-sm="2">
+
+
+            <ion-list-header color="medium">
+                <ion-label class="app-font-18 ion-padding-left"><strong>Entire ABS</strong></ion-label>
+            </ion-list-header>
+            <ion-row>
+                <ion-col size="8">
+
+            <ion-item  color="paper" class="app-font-18" routerLink="/bicycle" (click)="presentLoading()">
+                <strong>Bicycle Crunch</strong></ion-item>
+            </ion-col>
+            <ion-col size="4">
+
+                    <ion-item  color="tertiary" routerLink="/bicycle/bicyclehist">Progress</ion-item>
+                </ion-col>
+            </ion-row>
+
+                <ion-list-header color="medium">
+                    <ion-label class="app-font-18 ion-padding-left"><strong>Rectus ABS</strong></ion-label>
+                </ion-list-header>
+                <ion-row>
+                    <ion-col size="8">
+
+                <ion-item  color="paper" class="app-font-18" routerLink="/crunch" (click)="presentLoading()">
+                    <strong>Crunch</strong></ion-item>
+                </ion-col>
+                <ion-col size="4">
+
+                    <ion-item  color="tertiary" routerLink="/crunch/crunchhist">Progress</ion-item>
+                </ion-col>
+            </ion-row>
+
+            <ion-list-header color="medium">
+                <ion-label class="app-font-18 ion-padding-left"><strong>Lower ABS</strong></ion-label>
+            </ion-list-header>
+            <ion-row>
+                <ion-col size="8">
+
+            <ion-item  color="paper" class="app-font-18" routerLink="/hiproll" (click)="presentLoading()">
+                <strong>Hip Roll</strong></ion-item>
+            </ion-col>
+            <ion-col size="4">
+
+                    <ion-item  color="tertiary" routerLink="/hiprollhiprollhist">Progress</ion-item>
+                </ion-col>
+            </ion-row>
+
+            <ion-list-header color="medium">
+                <ion-label class="app-font-18 ion-padding-left"><strong>Serratus</strong></ion-label>
+            </ion-list-header>
+            <ion-row>
+                <ion-col size="8">
+
+                <ion-item  color="paper" class="app-font-18" routerLink="/bentarmpullover" (click)="presentLoading()">
+                    <strong>Bent-arm Pullover</strong>
+                </ion-item>
+            </ion-col>
+            <ion-col size="4">
+
+                    <ion-item  color="tertiary" routerLink="/bentarmpullover/bentarmpulloverhist">Progress</ion-item>
+                </ion-col>
+            </ion-row>
+
+
+    </ion-col>
+</ion-row>
+</ion-grid>
+
+</ion-content>

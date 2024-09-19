@@ -63,7 +63,7 @@ export class LoginPage {
     await loading.dismiss();
 
     if (user) {
-      this.router.navigateByUrl('/exerciselist', { replaceUrl: true });
+      this.router.navigateByUrl('/bicepslist', { replaceUrl: true });
     } else {
       this.showAlert('Login failed', 'Please try again!');
     }

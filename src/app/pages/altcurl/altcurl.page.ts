@@ -9,13 +9,12 @@ import { AlertController, NavController, LoadingController, Platform, IonContent
 import { Auth, user } from '@angular/fire/auth';
 import { DatePipe } from '@angular/common';
 import { Location } from '@angular/common';
-import { query, orderBy, limit } from "firebase/firestore";
 
 
 export interface Altcurl {
   $key?: string;
   setsToday: number;
-  dateToday: string;
+  dateToday: any;
   wtToday: number;
   repsToday: number;
   oneRMToday: any;
@@ -23,6 +22,16 @@ export interface Altcurl {
   newGoalSets: number;
   oneRMGoal: number;
   percentRM: number;
+  user: any,
+  lowReps1: Number;
+  WT: Number;
+  warmupWT: Number;
+  deltaWT: Number;
+  minReps: Number;
+  maxReps: Number;
+  startWT: Number;
+  startWT5: Number;
+  bestWT: Number;
 }
 
 @Component({
@@ -34,27 +43,18 @@ export interface Altcurl {
 export class AltcurlPage implements OnInit  {
   firestore: Firestore = inject(Firestore);
   private colRef: CollectionReference;
-  workout$: Observable<any[]>;
-  // altcurlWarmup$: Observable<any[]>;
-  altcurlOne$: Observable<any[]>;
-  altcurlTwo$: Observable<any[]>;
-  // altcurlThree$: Observable<any[]>;
-  // // altcurlFour$: Observable<any>;
-  // altcurlFive$: Observable<any[]>;
-  // altcurlSix$: Observable<any[]>;
-altcurlOne;
-altcurlTwo;
-altcurlThree;
-altcurlFour;
-altcurlFive
-altcurlSix;
+
+  workout: Observable<Altcurl[]>;
+  public altcurlWarmup: any = {};
+  public altcurlOne: any = {};
+  public altcurlTwo: any = {};
+  public altcurlThree: any = {};
+  public altcurlFour: any = {};
+  public altcurlFive: any = {};
+  public altcurlSix: any = {};
 
   userId: string;
-
-
-
   addActualForm: FormGroup;
-  challengeClicked = false;
   warningClicked = false;
   warmupClicked = true;
   warmupWTClicked = true;
@@ -102,8 +102,9 @@ limit: number;
   // AltcurlWarmupRef$: AngularFirestoreCollection<AltcurlWarmup>;
   // AltcurlWarmupObservable: Observable<AltcurlWarmup[]>;
 
-//  AltcurlOneRef$: AngularFirestoreCollection<AltcurlOne>;
-//  AltcurlOneObservable: Observable<AltcurlOne[]>;
+
+  // AltcurlOneRef$: AngularFirestoreCollection<AltcurlOne>;
+  // AltcurlOneObservable: Observable<AltcurlOne[]>;
 
   // AltcurlTwoRef$: AngularFirestoreCollection<AltcurlTwo>;
   // AltcurlTwoObservable: Observable<AltcurlTwo[]>;
@@ -138,19 +139,15 @@ limit: number;
   setWTClicked: any;
   minrepsClicked: any;
   bodyweightClicked: any;
-  // altcurlWarmup: Observable<any[]>;
   altcurlNotes1: Observable<any[]>;
   altcurlNotes2: Observable<any[]>;
   altcurlNotes3: Observable<any[]>;
-  // altcurlwarmup: Observable<any[]>;
   maxReps: any;
   addNotesForm:  FormGroup;
   addWarmupForm: FormGroup;
   threeSetsForm: FormGroup;
   twoSetsForm: FormGroup;
-  // altcurlFour: Observable<any[]>;
-  // altcurlFive: Observable<any[]>;
-  // altcurlSix: Observable<any[]>;
+
   fourSetsForm: FormGroup;
   fiveSetsForm: FormGroup;
   sixSetsForm: FormGroup;
@@ -191,15 +188,8 @@ limit: number;
   lb: string;
   swapClicked: any;
 
-
-  altcurlwarmup: any;
-
   firebase: any;
   collection: any;
-
-
-
-
 
 
   onButtonClick() {
@@ -216,8 +206,6 @@ limit: number;
     this.notesClicked = false;
     this.buttonClicked = false;
   }
-
-
 
   onBestminrepsClick() {
     this.bestminrepsClicked = !this.bestminrepsClicked;
@@ -240,15 +228,14 @@ limit: number;
     this.threeSetsClicked = false;
 
     this.warmupClicked = !this.warmupClicked;
-    this.presentLoading();
-    return this.collection(`/userProfile/${this.userId}/AltcurlWarmup`);
+    this.altcurlWarmup = this.altcurlService.getAltcurlWarmup();
   }
 
   async oneSetsClick() {
     this.buttonClicked = false;
     this.nextsetClicked = false;
     this.warmupClicked = false;
-    this.setOneClicked = true;
+    this.setOneClicked = false;
     this.twoSetsClicked = false;
     this.threeSetsClicked = false;
     this.fourSetsClicked = false;
@@ -257,6 +244,7 @@ limit: number;
     this.oneSetsClicked = !this.oneSetsClicked;
     this.msg3 = 1;
     this.presentLoading();
+    this.altcurlOne = this.altcurlService.getAltcurlOne();
 
   }
   async twoSetsClick() {
@@ -272,7 +260,8 @@ limit: number;
     this.twoSetsClicked = !this.twoSetsClicked;
     this.msg3 = 2;
     this.presentLoading();
-
+    this.altcurlOne = this.altcurlService.getAltcurlOne();
+    this.altcurlTwo = this.altcurlService.getAltcurlTwo();
 
 
 
@@ -290,7 +279,9 @@ limit: number;
     this.threeSetsClicked = !this.threeSetsClicked;
     this.msg3 = 3;
     this.presentLoading();
-
+    this.altcurlOne = this.altcurlService.getAltcurlOne();
+    this.altcurlTwo = this.altcurlService.getAltcurlTwo();
+    this.altcurlThree = this.altcurlService.getAltcurlThree();
 
   }
 
@@ -308,7 +299,10 @@ limit: number;
     this.fourSetsClicked = !this.fourSetsClicked;
     this.msg3 = 4;
     this.presentLoading();
-
+    this.altcurlOne = this.altcurlService.getAltcurlOne();
+    this.altcurlTwo = this.altcurlService.getAltcurlTwo();
+    this.altcurlThree = this.altcurlService.getAltcurlThree();
+    this.altcurlFour = this.altcurlService.getAltcurlFour();
 
   }
 
@@ -326,8 +320,11 @@ limit: number;
     this.fiveSetsClicked = !this.fiveSetsClicked;
     this.msg3 = 5;
     this.presentLoading();
-
-
+    this.altcurlOne = this.altcurlService.getAltcurlOne();
+    this.altcurlTwo = this.altcurlService.getAltcurlTwo();
+    this.altcurlThree = this.altcurlService.getAltcurlThree();
+    this.altcurlFour = this.altcurlService.getAltcurlFour();
+    this.altcurlFive = this.altcurlService.getAltcurlFive();
 
   }
 
@@ -345,7 +342,12 @@ limit: number;
     this.sixSetsClicked = !this.sixSetsClicked;
     this.msg3 = 6;
     this.presentLoading();
-
+    this.altcurlOne = this.altcurlService.getAltcurlOne();
+    this.altcurlTwo = this.altcurlService.getAltcurlTwo();
+    this.altcurlThree = this.altcurlService.getAltcurlThree();
+    this.altcurlFour = this.altcurlService.getAltcurlFour();
+    this.altcurlFive = this.altcurlService.getAltcurlFive();
+    this.altcurlSix = this.altcurlService.getAltcurlSix();
 
   }
 
@@ -412,63 +414,7 @@ limit: number;
       this.userId = this.userId;
 
 
-
       const db = getFirestore();
-
-
-
-      // this.colRef = collection(this.firestore, `altcurlOne`);
-
-      // this.altcurlOne$ = collectionData(altcurlOneRef);
-      // const altcurlOn = query(altcurlOneRef, orderBy("dateToday", "desc"), limit(1));
-      // console.log(this.altcurlOne$);
-
-      // const altcurlTwoRef = collection(this.firestore, "altcurlTwo");
-      // this.altcurlTwo$ = collectionData(altcurlTwoRef), orderBy("dateToday", "desc"), limit(1);
-
-
-
-
-      // this.altcurlOne$ = collectionData(this.altcurlOne ), orderBy('dateToday', 'desc'), limit(1)
-
-      //const altcurlWarmupRef = collection(this.db, "altcurlWarmup");
-
-
-
-
-      // this.altcurlWarmup = this.altcurlService.getAltcurlWarmup();
-
-      // this.altcurlOne = this.altcurlService.getAltcurlOne();
-      // this.altcurlTwo = this.altcurlService.getAltcurlTwo();
-      // this.altcurlThree = this.altcurlService.getAltcurlThree();
-      // this.altcurlFour = this.altcurlService.getAltcurlFour();
-      // this.altcurlFive = this.altcurlService.getAltcurlFive();
-      // this.altcurlSix = this.altcurlService.getAltcurlSix();
-
-      // const altcurlOne = collection(this.firestore, 'altcurlOne')
-      // this.altcurlOne$ = collectionData(altcurlOne);
-      // const altcurlTwo = collection(this.firestore, 'altcurlTwo')
-      // this.altcurlTwo$ = collectionData(altcurlTwo), orderBy("dateToday", "desc"), limit(1);
-      //  const altcurlThree = collection(this.firestore, 'altcurlThree')
-      //  this.altcurlThree$ = collectionData(altcurlThree), orderBy("dateToday", "desc"), limit(1);
-      //  const altcurlFour = collection(this.firestore, 'altcurlFour')
-      //  this.altcurlFour = collectionData(altcurlFour)
-      // const altcurlFive = collection(this.firestore, 'altcurlFive')
-      // this.altcurlFive$ = collectionData(altcurlFive), orderBy("dateToday", "desc"), limit(1);
-      // const altcurlSix = collection(this.firestore, 'altcurlSix')
-      // this.altcurlSix$ = collectionData(altcurlSix), orderBy("dateToday", "desc"), limit(1);
-
-
-    // this.collection(db, "altcurlOne").subscribe(altcurlOne => {
-    //   this.altcurlOne = altcurlOne;
-    //   console.log(altcurlOne);
-    // });
-    // this.collection(db, "altcurlTwo");
-    // this.collection(db, "altcurlThree");
-    // this.collection(db, "altcurlFour");
-    // this.collection(db, "altcurlFive");
-    // this.collection(db, "altcurlSix");
-
 
   }
 
@@ -479,14 +425,13 @@ limit: number;
 
   onLasttimeClick() {
     const db = getFirestore();
-    const altcurlOneS = this.altcurlService.getAltcurlOne();
-    // this.altcurlWarmup = this.altcurlService.getAltcurlWarmup();
-    // const altcurlOne = this.altcurlService.getAltcurlOne();
-    // const altcurlTwo = this.altcurlService.getAltcurlTwo();
-    // this.altcurlThree = this.altcurlService.getAltcurlThree();
-    // this.altcurlFour = this.altcurlService.getAltcurlFour();
-    // this.altcurlFive = this.altcurlService.getAltcurlFive()
-    // this.altcurlSix = this.altcurlService.getAltcurlSix();
+    this.altcurlOne = this.altcurlService.getAltcurlOne();
+    this.altcurlTwo = this.altcurlService.getAltcurlTwo();
+    this.altcurlThree = this.altcurlService.getAltcurlThree();
+    this.altcurlFour = this.altcurlService.getAltcurlFour();
+    this.altcurlFive = this.altcurlService.getAltcurlFive();
+    this.altcurlSix = this.altcurlService.getAltcurlSix();
+
     this.notesClicked = false;
     this.recomWTClicked = false;
     this.buttonClicked = false;
@@ -1006,25 +951,16 @@ limit: number;
     this.latestClicked = !this.latestClicked;
     this.notesClicked = false;
     this.recomWTClicked = false;
-    const db = getFirestore();
     this.buttonClicked = false;
 
-
-
-
-    const altcurlOne$ = this.altcurlService.getAltcurlOne();
-    const altcurlTwo = this.altcurlService.getAltcurlTwo();
-    const altcurlThree = this.altcurlService.getAltcurlThree();
+    this.altcurlOne = this.altcurlService.getAltcurlOne();
+    this.altcurlTwo = this.altcurlService.getAltcurlTwo();
+    this.altcurlThree = this.altcurlService.getAltcurlThree();
     this.altcurlFour = this.altcurlService.getAltcurlFour();
     this.altcurlFive = this.altcurlService.getAltcurlFive();
     this.altcurlSix = this.altcurlService.getAltcurlSix();
 
-    // this.altcurlOne = this.altcurlService.getAltcurlOne();
-    // this.altcurlTwo = this.altcurlService.getAltcurlTwo();
-    // this.altcurlThree = this.altcurlService.getAltcurlThree();
-    // this.altcurlFour = this.altcurlService.getAltcurlFour();
-    // this.altcurlFive = this.altcurlService.getAltcurlFive();
-    // this.altcurlSix = this.altcurlService.getAltcurlSix();
+
   }
 
   onnotesClick() {
@@ -1043,7 +979,7 @@ limit: number;
   }
   onWarmupWTClick() {
     this.warmupWTClicked = !this.warmupWTClicked;
-    this.altcurlwarmup = this.altcurlService.getAltcurlWarmup();
+    this.altcurlWarmup = this.altcurlService.getAltcurlWarmup();
     // this.altcurlThree = this.altcurlService.getAltcurlThree();
     // this.workout = this.altcurlService.getWorkout();
   }

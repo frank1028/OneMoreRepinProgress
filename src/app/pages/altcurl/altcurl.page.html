@@ -91,8 +91,7 @@
         <ion-grid>
           <ion-row
             class="app-font-13 ion-no-padding"
-            *ngFor="let item of altcurlOne$ | async"
-          >
+           >
             <ion-col size="1" class="ion-no-padding ion-text-center"
               ><strong></strong
             ></ion-col>
@@ -112,7 +111,7 @@
 
           <ion-row
             class="ion-padding-top"
-            *ngFor="let item of altcurlOne$ | async"
+            *ngFor="let item of altcurlOne | async"
           >
             <ion-col size="1" class="ion-no-padding ion-text-center"
               ><strong>1</strong></ion-col
@@ -134,7 +133,7 @@
           <ion-row
             class="app-font-12"
             class="ion-padding-top"
-            *ngFor="let item of altcurlTwo$ | async"
+            *ngFor="let item of altcurlTwo | async"
           >
             <ion-col size="1" class="ion-no-padding ion-text-center"
               ><strong>2</strong></ion-col
@@ -540,7 +539,7 @@
             color="tertiary"
             (click)="strength()"
             (click)="oneSetsClick()"
-            (click)="onLasttimeClick()"
+
             (click)="tinyN()"
             (click)="onWorkoutweightClick()"
             >1
@@ -554,7 +553,7 @@
             color="tertiary"
             (click)="strength()"
             (click)="twoSetsClick()"
-            (click)="onLasttimeClick()"
+
             (click)="tinyN()"
             (click)="onWorkoutweightClick()"
             ><strong >2</strong>
@@ -568,7 +567,7 @@
             color="tertiary"
             (click)="strength()"
             (click)="threeSetsClick()"
-            (click)="onLasttimeClick()"
+
             (click)="tinyN()"
             (click)="onWorkoutweightClick()"
             >3
@@ -582,7 +581,7 @@
             color="paper"
             (click)="strength()"
             (click)="fourSetsClick()"
-            (click)="onLasttimeClick()"
+
             (click)="tinyN()"
             (click)="onWorkoutweightClick()"
             >4
@@ -595,7 +594,7 @@
             color="paper"
             (click)="strength()"
             (click)="fiveSetsClick()"
-            (click)="onLasttimeClick()"
+
             (click)="tinyN()"
             (click)="onWorkoutweightClick()"
             >5
@@ -608,7 +607,7 @@
             color="paper"
             (click)="strength()"
             (click)="sixSetsClick()"
-            (click)="onLasttimeClick()"
+
             (click)="tinyN()"
             (click)="onWorkoutweightClick()"
             >6
@@ -631,7 +630,7 @@
             color="tertiary"
             (click)="strengthandmuscle()"
             (click)="oneSetsClick()"
-            (click)="onLasttimeClick()"
+
             (click)="tinyN()"
             (click)="onWorkoutweightClick()"
             >1
@@ -644,7 +643,7 @@
             color="tertiary"
             (click)="strengthandmuscle()"
             (click)="twoSetsClick()"
-            (click)="onLasttimeClick()"
+
             (click)="tinyN()"
             (click)="onWorkoutweightClick()"
             >2
@@ -657,7 +656,7 @@
             color="paper"
             (click)="strengthandmuscle()"
             (click)="threeSetsClick()"
-            (click)="onLasttimeClick()"
+
             (click)="tinyN()"
             (click)="onWorkoutweightClick()"
             >3
@@ -671,7 +670,7 @@
             color="paper"
             (click)="strengthandmuscle()"
             (click)="fourSetsClick()"
-            (click)="onLasttimeClick()"
+
             (click)="tinyN()"
             (click)="onWorkoutweightClick()"
             >4
@@ -684,7 +683,7 @@
             color="tertiary"
             (click)="strengthandmuscle()"
             (click)="fiveSetsClick()"
-            (click)="onLasttimeClick()"
+
             (click)="tinyN()"
             (click)="onWorkoutweightClick()"
             >5
@@ -697,7 +696,7 @@
             color="tertiary"
             (click)="strengthandmuscle()"
             (click)="sixSetsClick()"
-            (click)="onLasttimeClick()"
+
             (click)="tinyN()"
             (click)="onWorkoutweightClick()"
             >6
@@ -720,7 +719,7 @@
             color="tertiary"
             (click)="muscle()"
             (click)="oneSetsClick()"
-            (click)="onLasttimeClick()"
+
             (click)="tinyN()"
             (click)="onWorkoutweightClick()"
             >1
@@ -733,7 +732,7 @@
             color="tertiary"
             (click)="muscle()"
             (click)="twoSetsClick()"
-            (click)="onLasttimeClick()"
+
             (click)="tinyN()"
             (click)="onWorkoutweightClick()"
             >2
@@ -746,7 +745,7 @@
             color="paper"
             (click)="muscle()"
             (click)="threeSetsClick()"
-            (click)="onLasttimeClick()"
+
             (click)="tinyN()"
             (click)="onWorkoutweightClick()"
             >3
@@ -760,7 +759,7 @@
             color="tertiary"
             (click)="muscle()"
             (click)="fourSetsClick()"
-            (click)="onLasttimeClick()"
+
             (click)="tinyN()"
             (click)="onWorkoutweightClick()"
             >4
@@ -773,7 +772,7 @@
             color="tertiary"
             (click)="muscle()"
             (click)="fiveSetsClick()"
-            (click)="onLasttimeClick()"
+
             (click)="tinyN()"
             (click)="onWorkoutweightClick()"
             >5
@@ -786,7 +785,7 @@
             color="tertiary"
             (click)="muscle()"
             (click)="sixSetsClick()"
-            (click)="onLasttimeClick()"
+
             (click)="tinyN()"
             (click)="onWorkoutweightClick()"
             >6
@@ -800,7 +799,7 @@
             color="dark"
             class="app-font-15 ion-text-capitalize"
             (click)="muscleandendur()"
-            (click)="onLasttimeClick()"
+
           >
             <strong>Muscle/Endurance: 12 reps minimum</strong>
           </ion-label>
@@ -815,7 +814,7 @@
             color="tertiary"
             (click)="muscleandendur()"
             (click)="oneSetsClick()"
-            (click)="onLasttimeClick()"
+
             (click)="tinyN()"
             (click)="onWorkoutweightClick()"
             >1
@@ -828,7 +827,7 @@
             color="tertiary"
             (click)="muscleandendur()"
             (click)="twoSetsClick()"
-            (click)="onLasttimeClick()"
+
             (click)="tinyN()"
             (click)="onWorkoutweightClick()"
             >2
@@ -841,7 +840,7 @@
             color="paper"
             (click)="muscleandendur()"
             (click)="threeSetsClick()"
-            (click)="onLasttimeClick()"
+
             (click)="tinyN()"
             (click)="onWorkoutweightClick()"
             >3
@@ -855,7 +854,7 @@
             color="tertiary"
             (click)="muscleandendur()"
             (click)="fourSetsClick()"
-            (click)="onLasttimeClick()"
+
             (click)="tinyN()"
             (click)="onWorkoutweightClick()"
             >4
@@ -868,7 +867,7 @@
             color="tertiary"
             (click)="muscleandendur()"
             (click)="fiveSetsClick()"
-            (click)="onLasttimeClick()"
+
             (click)="tinyN()"
             (click)="onWorkoutweightClick()"
             >5
@@ -881,7 +880,7 @@
             color="tertiary"
             (click)="muscleandendur()"
             (click)="sixSetsClick()"
-            (click)="onLasttimeClick()"
+
             (click)="tinyN()"
             (click)="onWorkoutweightClick()"
             >6
@@ -904,7 +903,7 @@
             color="tertiary"
             (click)="endur()"
             (click)="oneSetsClick()"
-            (click)="onLasttimeClick()"
+
             (click)="tinyN()"
             (click)="onWorkoutweightClick()"
             >1
@@ -917,7 +916,7 @@
             color="tertiary"
             (click)="endur()"
             (click)="twoSetsClick()"
-            (click)="onLasttimeClick()"
+
             (click)="tinyN()"
             (click)="onWorkoutweightClick()"
             >2
@@ -930,7 +929,7 @@
             color="paper"
             (click)="endur()"
             (click)="threeSetsClick()"
-            (click)="onLasttimeClick()"
+
             (click)="tinyN()"
             (click)="onWorkoutweightClick()"
             >3
@@ -944,7 +943,7 @@
             color="tertiary"
             (click)="endur()"
             (click)="fourSetsClick()"
-            (click)="onLasttimeClick()"
+
             (click)="tinyN()"
             (click)="onWorkoutweightClick()"
             >4
@@ -957,7 +956,7 @@
             color="tertiary"
             (click)="endur()"
             (click)="fiveSetsClick()"
-            (click)="onLasttimeClick()"
+
             (click)="tinyN()"
             (click)="onWorkoutweightClick()"
             >5
@@ -970,7 +969,7 @@
             color="tertiary"
             (click)="endur()"
             (click)="sixSetsClick()"
-            (click)="onLasttimeClick()"
+
             (click)="tinyN()"
             (click)="onWorkoutweightClick()"
             >6
@@ -1000,7 +999,7 @@
         </div>
       </ion-card>
 
-      <ion-card color="paper" *ngIf="oneSetsClicked" mode="md">
+      <ion-card color="paper" class="ion-no=padding ion-no-margin" *ngIf="oneSetsClicked" mode="md">
         <ion-row>
           <ion-col size="7">
             <ion-button
@@ -1016,7 +1015,7 @@
           <ion-col
             size="3"
             class="ion-padding-top"
-            *ngFor="let item of altcurlOne$ | async"
+            *ngFor="let item of altcurlOne | async"
           >
             <strong>{{item.warmupWT}} x 15</strong>
           </ion-col>
@@ -1033,7 +1032,7 @@
                 <ion-col
                   class="app-font-14 ion-text-center"
                   color="midnightblue"
-                  *ngFor="let item of altcurlOne$ | async"
+                  *ngFor="let item of altcurlOne | async"
                 >
                   <strong>
                     You are capable of
@@ -1044,7 +1043,7 @@
                 </ion-col>
               </ion-row>
 
-              <ion-row *ngFor="let item of altcurlOne$ | async">
+              <ion-row *ngFor="let item of altcurlOne | async">
                 <ion-col
                   size="5.25"
                   class="app-font-14 ion-text-left ion-text-capitalize"
@@ -1060,7 +1059,7 @@
               </ion-row>
               <ion-row
                 style="height: 3.5vh"
-                *ngFor="let item of altcurlOne$ | async"
+                *ngFor="let item of altcurlOne | async"
               >
                 <ion-col size="5.25" class="app-font-14 ion-text-left">
                   <strong>When Set {{msg3}} result is</strong>
@@ -1084,7 +1083,7 @@
             <ion-row
               class="ion-no-margin app-font-14"
               style="height: 3vh"
-              *ngFor="let item of altcurlOne$ | async"
+              *ngFor="let item of altcurlOne | async"
             >
               <ion-col size="1" class="ion-text-right"
                 ><strong></strong
@@ -1110,13 +1109,13 @@
             <ion-row class="ion-text-right">
 
 
-                <ion-col size="4" *ngFor="let item of altcurlOne$ | async" >
+                <ion-col size="4" *ngFor="let item of altcurlOne | async" >
                   <ion-row class="ion-text-left app-font-12">
                     <strong
                       >{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}</strong
                     >
                   </ion-row>
-                  <ion-row class="ion-text-left" *ngFor="let item of altcurlOne$ | async" >
+                  <ion-row class="ion-text-left" *ngFor="let item of altcurlOne | async" >
                     <strong> {{item.wtToday }} X {{item.repsToday}}</strong>
                   </ion-row>
                 </ion-col>
@@ -1162,7 +1161,7 @@
         </div>
       </ion-card>
 
-      <ion-card color="paper" *ngIf="twoSetsClicked" mode="md">
+      <ion-card color="paper" class="ion-no=padding ion-no-margin" *ngIf="twoSetsClicked" mode="md">
         <ion-row>
           <ion-col size="7">
             <ion-button
@@ -1178,7 +1177,7 @@
           <ion-col
             size="3"
             class="ion-padding-top"
-            *ngFor="let item of altcurlTwo$ | async"
+            *ngFor="let item of altcurlTwo | async"
 
           >
             <strong>{{item.warmupWT}} x 15</strong>
@@ -1196,7 +1195,7 @@
                 <ion-col
                   class="app-font-14 ion-text-center"
                   color="midnightblue"
-                  *ngFor="let item of altcurlOne$ | async"
+                  *ngFor="let item of altcurlOne | async"
                 >
                   <strong>
                     You are capable of
@@ -1207,7 +1206,7 @@
                 </ion-col>
               </ion-row>
 
-              <ion-row *ngFor="let item of altcurlTwo$ | async">
+              <ion-row *ngFor="let item of altcurlTwo | async">
                 <ion-col
                   size="5.25"
                   class="app-font-14 ion-text-left ion-text-capitalize"
@@ -1225,7 +1224,7 @@
               </ion-row>
               <ion-row
                 style="height: 3.5vh"
-                *ngFor="let item of altcurlTwo$ | async"
+                *ngFor="let item of altcurlTwo | async"
               >
                 <ion-col size="5.25" class="app-font-14 ion-text-left">
                   <strong>When Set {{msg3}} result is</strong>
@@ -1248,7 +1247,7 @@
             <ion-row
               class="ion-no-margin app-font-14"
               style="height: 3vh"
-              *ngFor="let item of altcurlTwo$ | async"
+              *ngFor="let item of altcurlTwo | async"
             >
               <ion-col size="1" class="ion-text-right"
                 ><strong></strong
@@ -1275,7 +1274,7 @@
               <!-- <ion-col size="1" class="ion-text-left"
                 ><strong>1</strong></ion-col -->
 
-              <ion-col size="5" *ngFor="let item of altcurlOne$ | async">
+              <ion-col size="5" *ngFor="let item of altcurlOne | async">
                 <ion-row class="ion-text-left app-font-12">
                   <strong
                     >{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}</strong
@@ -1331,7 +1330,7 @@
                 <!-- <ion-col size="1" class="ion-text-left"
                   ><strong>2 </strong></ion-col
                 > -->
-                <ion-col size="5" *ngFor="let item of altcurlTwo$ | async">
+                <ion-col size="5" *ngFor="let item of altcurlTwo | async">
                   <ion-row class=" app-font-12">
                     <strong
                       >{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}</strong
@@ -1384,7 +1383,7 @@
 
         </ion-card>
 
-        <ion-card color="paper" *ngIf="threeSetsClicked" mode="md">
+        <ion-card color="paper" class="ion-no=padding ion-no-margin" *ngIf="threeSetsClicked" mode="md">
         <ion-row>
           <ion-col size="7">
             <ion-button
@@ -1416,7 +1415,7 @@
                 <ion-col
                   class="app-font-14 ion-text-center"
                   color="midnightblue"
-                  *ngFor="let item of altcurlOne$ | async"
+                  *ngFor="let item of altcurlOne | async"
                 >
                   <strong>
                     You are capable of
@@ -1489,7 +1488,7 @@
               <!-- <ion-col size="1" class="ion-text-left"
                 ><strong>1</strong></ion-col -->
 
-              <ion-col size="4" *ngFor="let item of altcurlOne$ | async">
+              <ion-col size="4" *ngFor="let item of altcurlOne | async">
                 <ion-row class="ion-text-left app-font-12">
                   <strong
                     >{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}</strong
@@ -1545,7 +1544,7 @@
                 <!-- <ion-col size="1" class="ion-text-left"
                   ><strong>2 </strong></ion-col -->
 
-                <ion-col size="4" *ngFor="let item of altcurlTwo$ | async">
+                <ion-col size="4" *ngFor="let item of altcurlTwo | async">
                   <ion-row class="ion-text-left app-font-12">
                     <strong
                       >{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}</strong
@@ -1649,7 +1648,7 @@
 
         </ion-card>
 
-        <ion-card color="paper" *ngIf="fourSetsClicked" mode="md">
+        <ion-card color="paper" class="ion-no=padding ion-no-margin" *ngIf="fourSetsClicked" mode="md">
         <ion-row>
           <ion-col size="7">
             <ion-button
@@ -1681,7 +1680,7 @@
                 <ion-col
                   class="app-font-14 ion-text-center"
                   color="midnightblue"
-                  *ngFor="let item of altcurlOne$ | async"
+                  *ngFor="let item of altcurlOne | async"
                 >
                   <strong>
                     You are capable of
@@ -1754,7 +1753,7 @@
               <!-- <ion-col size="1" class="ion-text-left"
                 ><strong>1</strong></ion-col -->
 
-              <ion-col size="4" *ngFor="let item of altcurlOne$ | async">
+              <ion-col size="4" *ngFor="let item of altcurlOne | async">
                 <ion-row class="ion-text-left app-font-12">
                   <strong
                     >{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}</strong
@@ -1810,7 +1809,7 @@
                 <!-- <ion-col size="1" class="ion-text-left"
                   ><strong>2 </strong></ion-col -->
 
-                <ion-col size="4" *ngFor="let item of altcurlTwo$ | async">
+                <ion-col size="4" *ngFor="let item of altcurlTwo | async">
                   <ion-row class="ion-text-left app-font-12">
                     <strong
                       >{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}</strong
@@ -1969,7 +1968,7 @@
         </div>
       </ion-card>
 
-      <ion-card color="paper" *ngIf="fiveSetsClicked" mode="md">
+      <ion-card color="paper" class="ion-no=padding ion-no-margin" *ngIf="fiveSetsClicked" mode="md">
         <ion-row>
           <ion-col size="7">
             <ion-button
@@ -2001,7 +2000,7 @@
                 <ion-col
                   class="app-font-14 ion-text-center"
                   color="midnightblue"
-                  *ngFor="let item of altcurlOne$ | async"
+                  *ngFor="let item of altcurlOne | async"
                 >
                   <strong>
                     You are capable of
@@ -2074,7 +2073,7 @@
               <!-- <ion-col size="1" class="ion-text-left"
                 ><strong>1</strong></ion-col -->
 
-              <ion-col size="4" *ngFor="let item of altcurlOne$ | async">
+              <ion-col size="4" *ngFor="let item of altcurlOne | async">
                 <ion-row class="ion-text-left app-font-12">
                   <strong
                     >{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}</strong
@@ -2130,7 +2129,7 @@
                 <!-- <ion-col size="1" class="ion-text-left"
                   ><strong>2 </strong></ion-col -->
 
-                <ion-col size="4" *ngFor="let item of altcurlTwo$ | async">
+                <ion-col size="4" *ngFor="let item of altcurlTwo | async">
                   <ion-row class="ion-text-left app-font-12">
                     <strong
                       >{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}</strong
@@ -2349,7 +2348,7 @@
         </div>
       </ion-card>
 
-      <ion-card color="paper" *ngIf="sixSetsClicked" mode="md">
+      <ion-card color="paper" class="ion-no=padding ion-no-margin" *ngIf="sixSetsClicked" mode="md">
           <ion-row>
           <ion-col size="7">
             <ion-button
@@ -2381,7 +2380,7 @@
                 <ion-col
                   class="app-font-14 ion-text-center"
                   color="midnightblue"
-                  *ngFor="let item of altcurlOne$ | async"
+                  *ngFor="let item of altcurlOne | async"
                 >
                   <strong>
                     You are capable of
@@ -2454,7 +2453,7 @@
               <!-- <ion-col size="1" class="ion-text-left"
                 ><strong>1</strong></ion-col -->
 
-              <ion-col size="4" *ngFor="let item of altcurlOne$ | async">
+              <ion-col size="4" *ngFor="let item of altcurlOne | async">
                 <ion-row class="ion-text-left app-font-12">
                   <strong
                     >{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}</strong
@@ -2510,7 +2509,7 @@
                 <!-- <ion-col size="1" class="ion-text-left"
                   ><strong>2 </strong></ion-col -->
 
-                <ion-col size="4" *ngFor="let item of altcurlTwo$ | async">
+                <ion-col size="4" *ngFor="let item of altcurlTwo | async">
                   <ion-row class="ion-text-left app-font-12">
                     <strong
                       >{{item?.dateToday?.toDate() | date:'yyyy-MM-dd'}}</strong

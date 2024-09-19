@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 
-import {Firestore,  getDocs, collection,  CollectionReference, query, orderBy, limit, onSnapshot, collectionData} from '@angular/fire/firestore';
+import {Firestore,  getDocs, collection,  CollectionReference, query, orderBy, limit, onSnapshot, collectionData, doc, getDoc} from '@angular/fire/firestore';
 
 import { Auth, onAuthStateChanged } from '@angular/fire/auth';
 import { serverTimestamp} from '@angular/fire/firestore';
@@ -8,7 +8,7 @@ import { serverTimestamp} from '@angular/fire/firestore';
 import * as firebase from 'firebase/app';
 import { getFirestore,  addDoc} from 'firebase/firestore';
 import { AlertController, LoadingController } from '@ionic/angular';
-import { map, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable, Subscription } from 'rxjs';
 
 
 const db = getFirestore();
@@ -20,29 +20,13 @@ export class AltcurlService {
   firestore: Firestore = inject(Firestore);
   private colRef: CollectionReference;
 
+  public altcurlOne: any = {};
+  public altcurlTwo: any = {};
+  public altcurlThree: any = {};
+  public altcurlFour: any = {};
+  public altcurlFive: any = {};
+  public altcurlSix: any = {};
 
-  AltcurlWarmup$: Observable<any[]>;
-  altcurlOne$: Observable<any[]>;
-  altcurlOne: any;
-  // altcurlTwo$: Observable<any[]>;
-  // altcurlThree$: Observable<any[]>;
-  // altcurlFour$: Observable<any[]>;
-  // altcurlFive$: Observable<any[]>;
-  // altcurlSix$: Observable<any[]>;
-
-
-
-
-  // altcurlsetsgoal: AngularFirestoreCollection<any>;
-  // altcurlWarmup: AngularFirestoreCollection<any>;
-  // altcurlOne: AngularFirestoreCollection<any>;
-  // altcurlTwo: AngularFirestoreCollection<any>;
-  // altcurlThree: AngularFirestoreCollection<any>;
-  // altcurlFour: AngularFirestoreCollection<any>;
-  // altcurlFive: AngularFirestoreCollection<any>;
-  // altcurlSix: AngularFirestoreCollection<any>;
-  // workoutweight: AngularFirestoreCollection<unknown>;
-  // workout: AngularFirestoreCollection<any>;
   exerName!: string;
   currentDate: any = new Date().toLocaleDateString('en-us');
   datepipe: any;
@@ -77,10 +61,7 @@ export class AltcurlService {
   altcurlOneQuery: any;
   collection: any;
   collectionData: any;
-q: any;
-
-
-
+  q: any;
 
   constructor(
     public auth: Auth,
@@ -90,8 +71,8 @@ q: any;
   ) {
 
 
-  const altcurlOneRef = collection(this.firestore, "altcurlOne");
-      this.altcurlOne$ = collectionData(altcurlOneRef), orderBy("dateToday", "desc"), limit(1);
+  // const altcurlOneRef = collection(this.firestore, "altcurlOne");
+  //     this.altcurlOne$ = collectionData(altcurlOneRef), orderBy("dateToday", "desc"), limit(1);
 
     // this.auth.authState.subscribe(user => {
     //   this.userId = user.uid;
@@ -105,83 +86,140 @@ q: any;
     //   this.workout = this.afs.collection(`/userProfile/${user.uid}/workout`);
       // }
   }
-  altcurl() {
-    throw new Error('Method not implemented.');
-  }
+
 
 
   async getAltcurlWarmup() {
-    const altcurlWarmupRef = collection(this.db, "altcurlWarmup");
+    const docRef = collection(this.db, "altcurlWarmup");
 
     try {
-      const docsSnap = await getDocs(altcurlWarmupRef);
-      docsSnap.forEach(doc => {
-        console.log(doc.data());
-        console.log(doc.id);
+
+      const q = query(docRef, orderBy("dateToday", "desc"), limit(1));
+
+      const docSnap = (await getDocs(q));
+
+      docSnap.forEach((doc) => {
+
+        const altcurlWarmup = doc.data();
+        console.log(altcurlWarmup);
+
       })
-    } catch (error) {
-      console.log(error);
-  }
+    } catch (err) {
+      console.log("getaltcurlWarmup:" + err)
+       }
 }
 
  async getAltcurlOne() {
+
 
       const db = getFirestore();
       const dbRef = collection(db, "altcurlOne")
 
       try {
-        const docsSnap = await getDocs(dbRef);
-        docsSnap.forEach(doc => {
-          const altcurlOne$ = doc.data();
 
-         console.log(altcurlOne$);
+        const q = query(dbRef, orderBy("dateToday", "desc"), limit(1));
+
+        const docSnap = (await getDocs(q));
+
+        docSnap.forEach((doc) => {
+
+          const altcurlOne = doc.data();
+          console.log(altcurlOne);
 
         })
       } catch (err) {
         console.log("getaltcurlOne:" + err)
-      }
-
-
-  }
-
-
-  getAltcurlTwo() {
+         }
 
   }
 
 
-  getAltcurlThree() {
+  async getAltcurlTwo() {
     const db = getFirestore();
-    return this.collection(`userProfile/${this.userId}/altcurlThree`,
-      ref =>
-        ref.orderBy('dateToday', 'desc').limit(1)
-    );
-  }
+    const dbRef = collection(db, "altcurlTwo");
 
-getAltcurlFour() {
-    // return this.collection(`userProfile/${this.userId}/altcurlFour`,
-    //   ref =>
-    //     ref.orderBy('dateToday', 'desc').limit(1)
-    // );
-  }
+    try {
+    const q = query(dbRef, orderBy("dateToday", "desc"), limit(1));
 
-getAltcurlFive() {
-    // return this.collection(`userProfile/${this.userId}/altcurlFive`,
-    //   ref =>
-    //     ref.orderBy('dateToday', 'desc').limit(1)
-    // );
-
-  }
-
-getAltcurlSix() {
-      // return this.collection(`userProfile/${this.userId}/altcurlSix`,
-      //   ref =>
-      //     ref.orderBy('dateToday', 'desc').limit(1)
-      // );
+    const docSnap = (await getDocs(q));
+    docSnap.forEach((doc) => {
+      console.log(doc.data());
+    })
+  } catch (err) {
+    console.log("getaltcurlTwo:" + err)
+     }
 
   }
 
 
+  async getAltcurlThree() {
+    const db = getFirestore();
+    const dbRef = collection(db, "altcurlThree");
+
+ try {
+    const q = query(dbRef, orderBy("dateToday", "desc"), limit(1));
+
+    const docSnap = (await getDocs(q));
+    docSnap.forEach((doc) => {
+      console.log(doc.data());
+    })
+  } catch (err) {
+    console.log("getaltcurlThree:" + err)
+     }
+
+  }
+
+  async getAltcurlFour() {
+    const db = getFirestore();
+      const dbRef = collection(db, "altcurlFour")
+
+      try {
+        const q = query(dbRef, orderBy("dateToday", "desc"), limit(1));
+
+        const docSnap = (await getDocs(q));
+        docSnap.forEach((doc) => {
+          console.log(doc.data());
+        })
+      } catch (err) {
+        console.log("getaltcurlFour:" + err)
+         }
+  }
+
+  async getAltcurlFive() {
+  const db = getFirestore();
+  const dbRef = collection(db, "altcurlFive")
+
+  try {
+    const q = query(dbRef, orderBy("dateToday", "desc"), limit(1));
+
+    const docSnap = (await getDocs(q));
+    docSnap.forEach((doc) => {
+      console.log(doc.data());
+    })
+  } catch (err) {
+    console.log("getaltcurlFive:" + err)
+     }
+
+  }
+
+  async getAltcurlSix() {
+  const db = getFirestore();
+  const dbRef = collection(db, "altcurlSix")
+
+  try {
+    const q = query(dbRef, orderBy("dateToday", "desc"), limit(1));
+
+    const docSnap = (await getDocs(q));
+    docSnap.forEach((doc) => {
+      console.log(doc.data());
+    })
+  } catch (err) {
+    console.log("getaltcurlSix:" + err)
+     }
+
+  }
+
+// WAS:
 
   // getAltcurlTwo(): AngularFirestoreCollection<any> {
   //   return this.afs.collection(`userProfile/${this.userId}/altcurlTwo`,
@@ -317,6 +355,7 @@ getAltcurlSix() {
   ): Promise<any> {
 
     addDoc(collection(this.db, 'altcurlWarmup'), {
+      user: this.auth.currentUser?.uid,
       wtToday,
       dateToday: serverTimestamp(),
 
@@ -428,13 +467,10 @@ getAltcurlSix() {
     this.percentRM = Math.floor((100 * 35) / (34 + repsToday / 1 / 1));
 
 
-this.colRef = collection(this.firestore, 'altcurlOne');
-addDoc(this.colRef, {...this.altcurlOne,
-  user: this.auth.currentUser?.uid,
 
 
-    // addDoc(collection(this.db, "altcurlOne"), {
-
+addDoc(collection(this.db, 'altcurlOne'), {
+      user: this.auth.currentUser?.uid,
       repsToday,
       wtToday,
       lowReps1,
@@ -450,17 +486,13 @@ addDoc(this.colRef, {...this.altcurlOne,
       startWT5: Number(this.startWT5),
       bestWT: Number(this.bestWT),
     })
-    .then(colRef => {
-      console.log(colRef.id);
-      console.log(colRef);
+    .then(newWorkoutOneRef => {
+      console.log(newWorkoutOneRef.id);
     })
     .catch(error => {
       console.log(error);
     });
-
-    await this.loadingController.dismiss();
   }
-
 
   async createWorkoutTwo(
     repsToday: number,
@@ -542,7 +574,10 @@ addDoc(this.colRef, {...this.altcurlOne,
     this.oneRMToday = Math.floor((wtToday / 1) * ((34 / 35) + (repsToday / 35)));
     this.percentRM = Math.floor((100 * 35) / (34 + repsToday / 1));
 
+
+
     addDoc(collection(this.db, 'altcurlTwo'), {
+      user: this.auth.currentUser?.uid,
       repsToday,
       wtToday,
       lowReps1,
@@ -555,7 +590,8 @@ addDoc(this.colRef, {...this.altcurlOne,
       deltaWT: Number(this.deltaWT),
       minReps: Number(this.minReps),
       maxReps: Number(this.maxReps),
-    }) .then(newWorkoutTwoRef => {
+    })
+    .then(newWorkoutTwoRef => {
       console.log(newWorkoutTwoRef.id);
     })
     .catch(error => {
@@ -642,6 +678,7 @@ addDoc(this.colRef, {...this.altcurlOne,
     this.percentRM = Math.floor((100 * 35) / (34 + repsToday / 1));
 
     addDoc(collection(this.db, 'altcurlThree'), {
+      user: this.auth.currentUser?.uid,
       repsToday,
       wtToday,
       lowReps1,
@@ -740,6 +777,7 @@ addDoc(this.colRef, {...this.altcurlOne,
     this.percentRM = Math.floor((100 * 35) / (34 + repsToday / 1));
 
     addDoc(collection(this.db, 'altcurlFour'), {
+      user: this.auth.currentUser?.uid,
       repsToday,
       wtToday,
       lowReps1,
@@ -841,6 +879,7 @@ addDoc(this.colRef, {...this.altcurlOne,
     this.percentRM = Math.floor((100 * 35) / (34 + repsToday / 1));
 
     addDoc(collection(this.db, 'altcurlFive'), {
+      user: this.auth.currentUser?.uid,
       repsToday,
       wtToday,
       lowReps1,
@@ -941,6 +980,7 @@ addDoc(this.colRef, {...this.altcurlOne,
     this.percentRM = Math.floor((100 * 35) / (34 + repsToday / 1 / 1));
 
     addDoc(collection(this.db, 'altcurlSix'), {
+      user: this.auth.currentUser?.uid,
       repsToday,
       wtToday,
       lowReps1,
@@ -965,6 +1005,7 @@ addDoc(this.colRef, {...this.altcurlOne,
     ): Promise<any> {
 
       addDoc(collection(this.db, 'workout'), {
+        user: this.auth.currentUser?.uid,
         exerName: `Alternate Curl (biceps)`,
         currentDate: this.currentDate,
         dateToday: serverTimestamp(),
@@ -986,6 +1027,7 @@ addDoc(this.colRef, {...this.altcurlOne,
       sets: '2',
     }) .then(newWorkoutTwoRef => {
       console.log(newWorkoutTwoRef.id);
+
     })
     .catch(error => {
       console.log(error);
